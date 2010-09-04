@@ -13,9 +13,7 @@ int main()
     //LLinsert(&root, i);
   }
   LLtraverse(lm->head);
-  //LLreverse(&root);
 
-  //LLtraverse(root);
   return 0;
 }
 
