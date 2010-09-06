@@ -1,5 +1,5 @@
 #include "ll.h"
-#include "hash.h"
+//#include "hash.h"
 
 int main()
 {
@@ -7,9 +7,9 @@ int main()
   int i = 0;
   LL *root = NULL;
   LLmeta *lm = NULL;
-  HT *ht = NULL;
+  //HT *ht = NULL;
   LLinit(&lm);
-  ht = hashInit(lm);
+  //ht = hashInit(lm);
 
   /*
   for(c = 'a' ; c <= 'd'; c++)

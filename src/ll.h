@@ -34,7 +34,7 @@ int LLinit(LLmeta **lm)
   return 0;
 }
 
-LL* LLappend(LLmeta *lm, void *ele, unsigned int esize)
+int LLappend(LLmeta *lm, void *ele, unsigned int esize)
 {
   LL *temp = NULL;
   printf("call %d\n", lm->count);
@@ -43,13 +43,13 @@ LL* LLappend(LLmeta *lm, void *ele, unsigned int esize)
   if(temp == NULL)
   {
     printf("cant malloc1\n");
-    return NULL;
+    return -1;
   }
   temp->element = (void*)malloc(sizeof(esize));
   if(temp->element == NULL)
   {
     printf("cant malloc1\n");
-    return NULL;
+    return -1;
   }
   temp->element = ele;
   lm->count++;
@@ -59,8 +59,8 @@ LL* LLappend(LLmeta *lm, void *ele, unsigned int esize)
     lm->head = temp;
     lm->tail = temp;
     /* set prev and next to itself in case of first record */
-    temp->prev = NULL;
-    temp->next = NULL;
+    temp->prev = temp;
+    temp->next = temp;
     printf("first ele added %d %p\n", *(int*)(temp->element), temp);
   }
   else
@@ -79,7 +79,7 @@ LL* LLappend(LLmeta *lm, void *ele, unsigned int esize)
   printf("head %d and tail %d temp %p\n", *(int*)lm->head->element, *(int*)lm->tail->element, temp);
   printf("LLhead %p lm_count %d\n", lm, lm->count);
   printf("-------------------\n");
-  return temp;
+  return 0;
 }
 
 int LLdelete(LLmeta *lm, LL *ele)
