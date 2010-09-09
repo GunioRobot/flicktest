@@ -45,12 +45,13 @@ int hashgen(void *value)
 int hashInsert(HT *htmeta, void *value)
 {
   int key = hashgen(value);
-  printf("value %c and key %d\n", *(char *)value, key);
-  printf("htmeta %p count htmeta %d\n", htmeta, htmeta->count);
-
-  htmeta->count++;
-  LLdelete(htmeta->lm, htmeta->ele[key]);
+ 
+  if (LLdelete(htmeta->lm, htmeta->ele[key]))
+    htmeta->count++;
+  
   htmeta->ele[key] = LLappend(htmeta->lm, value, sizeof(char));    
+ printf("value %c and key %d", *(char *)value, key);
+  printf("htmeta %p count htmeta %d\n", htmeta, htmeta->count);
 
   return 0;
 }

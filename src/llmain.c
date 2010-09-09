@@ -1,31 +1,33 @@
 #include "ll.h"
-//#include "hash.h"
+#include "hash.h"
 
 int main()
 {
-  char c = 'a';
+  char *c;
   int i = 0;
+  char *str = "gabchcfgajbdghfjiyfg";
+  char *chstr = "ghj"
   LL *root = NULL;
   LLmeta *lm = NULL;
-  //HT *ht = NULL;
+  HT *ht = NULL;
   LLinit(&lm);
-  //ht = hashInit(lm);
+  ht = hashInit(lm);
 
-  /*
-  for(c = 'a' ; c <= 'd'; c++)
+  
+  for(c = str ; *c != '\0'; c++)
   {
-    //hashInsert(ht, (void*)&c);
-    LLappend(lm, (void*)&c, sizeof(c));
+    hashInsert(ht, (void*)c);
+    if (ht->count = 3)
   }
-  LLtraverse(lm->head);
-*/
 
-  for (i = 0; i <4; i++)
+/*
+  for (i = 0; i < 4; i++)
   {
     LLappend(lm, (void*)&i, sizeof(i));
   }
 
   LLtraverse(lm->head);
+  */
   return 0;
 }
 
