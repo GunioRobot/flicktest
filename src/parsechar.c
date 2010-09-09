@@ -6,7 +6,7 @@ int main()
   char *c;
   int i = 0;
   char *str = "gabchcfgajbdghfjiyfg";
-  char *chstr = "ghj"
+  char *chstr = "ghj";
   LL *root = NULL;
   LLmeta *lm = NULL;
   HT *ht = NULL;
@@ -17,7 +17,7 @@ int main()
   for(c = str ; *c != '\0'; c++)
   {
     hashInsert(ht, (void*)c);
-    if (ht->count = 3)
+    //if (ht->count = 3)
   }
 
 /*
