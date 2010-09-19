@@ -1,0 +1,151 @@
+
+% LaTeX file for resume 
+% This file uses the resume document class (res.cls)
+
+\documentclass{res} 
+%\usepackage{helvetica} % uses helvetica postscript font (download helvetica.sty)
+%\usepackage{newcent}   % uses new century schoolbook postscript font 
+\usepackage{fullpage}
+\newsectionwidth{0pt}  % So the text is not indented under section headings
+\usepackage{fancyhdr}  % use this package to get a 2 line header
+\renewcommand{\headrulewidth}{0pt} % suppress line drawn by default by fancyhdr
+\setlength{\headheight}{24pt} % allow room for 2-line header
+\textheight=60\baselineskip
+\setlength{\headsep}{24pt}  % space between header and text
+\setlength{\headheight}{24pt} % allow room for 2-line header
+\pagestyle{fancy}     % set pagestyle for document
+%\rhead{ {\it Z. Zinger}\\{\it p. \thepage} } % put text in header (right side)
+%\cfoot{}                                     % the foot is empty
+\topmargin=-0.5in % start text higher on the page
+
+\begin{document}
+\thispagestyle{empty} % this page has no header  
+\name{JANAK CHANDARANA\\[12pt]}% the \\[12pt] adds a blank line after name
+
+%\address{ Plot No.1351/2,\\ Sector-2/B, \\
+%  Gandhinagar \\  382002 \\ }     
+
+\address{ \\ \\ \\}
+
+\address{  \\ chandarana [at] gmail.com \\ 91-9379228622\\ }
+					 % (315) 493-8621 }
+
+\begin{resume}
+
+					 \section{DOMAIN KNOWLEDGE}
+					 %\vspace{8pt} % provide vertical space between section title and contents
+
+					 2 years of work experience in System Programming, Networking, Distributed systems, Clusters, Algorithms 
+					  
+					  %\vspace{0.2in}
+					  \section{EDUCATION}
+					  \begin{itemize}
+					  \item M.Tech.(IT), Department of Computer Science, IIT Bombay, 2008. CPI 9.29/10 
+					  \item B.E. (Information Technology) from North Gujarat University, 2005. 
+					  \end{itemize}
+
+					  \section{RELEVANT SKILLS}
+
+					  \begin{itemize}
+					  \item C, C++, IPC, threads, process \& memory management, sockets
+				          \item Debugging skills: Valgrind, GDB, Wireshark, Lint, Dump analysis etc.
+                                          %\item Basic compression, encryption and encoding,                                        
+					  \item TCP/IP protocols, Distributed and real-time processes, Network algorithmics
+                                          \item Linux, Basic Scripting in Python and Perl, Versioning with GIT and SVN
+					  \item Misc: \LaTeX, Eclipse, CVS, Asterisk PBS, Berkeley DB, Google App Engine 
+					  \end{itemize}
+					  %\vspace{8pt} % provide vertical space between section title and contents
+
+					  \section{WORK EXPERIENCE} 
+					  {\bf Member of Technical Staff at Oracle}
+					  \\{\bf Duration}:  From July, 2008\\
+					  {\bf Group}: Real application clusters (RAC) in Database Server Technology\\ 
+					  {\bf Work}: Research, Design, Development, Testcase, Documentation, bug fixing, entire life cycle of product\\
+					  {\bf Technology}: System Programming, C, Linux, Perl scripts
+
+					  {\bf Summer Intern at Intel, Bangalore}\\
+					  {\bf Group}: Intel Research 
+					  \\{\bf Duration}: May, 2007 to Aug, 2007
+					  \\{\bf Work}: Research, Prototype development, Documentation
+					  \\{\bf Technology}: WiMAX (802.16d), Packet scheduler, QoS for wireless
+
+
+					  {\bf Research Assistant, Wireless group, IIT Bombay} 
+					  \\{\bf Duration}: Aug, 2005 to June, 2008.
+					  \\{\bf Work}: Prototype developement, Publications, System admin
+					  \\{\bf Technology}: Wireless Protocols, Network Devices, Technologies for rural developement  
+
+					  \vspace{0.2in} 
+
+				      \section{PUBLICATIONS} 
+					  \begin{itemize}
+					  \item  J. Chandarana, K. Sravana , S. Perur, R. Rangarajan, S. Sahasrabuddhe and S. Iyer, {\bf VoIP-based
+					  Intra-village Teleconnectivity: An Architecture and Case Study}, WISARD, COMSWARE,
+					  Bangalore, 2007
+
+					  \item A. Gumaste, J. Chandarana, P. Bafna, N. Ghani and V. Sharma, {\bf On Control Plane for Service
+					  Provisioning in Light-trail WDM Optical Networks}, 42nd IEEE International Conference on
+					  Communication (ICC), Glasgow, UK, 2007
+
+					  \item J. Chandarana, R. Madalapu, S. Kurkure, S. Hullur, A. Sahoo and S. Iyer, {\bf Emulation of WiFiRe
+					  protocol on LAN}, National Communication Conference, Mumbai, 2008
+
+					  %\vspace{0.2in}
+					  \end{itemize}
+
+
+					  \vspace{0.2in} 
+
+					  \section{PROJECTS}
+					  \begin{itemize}
+					  \item {\bf Oracle Instantaneous problem detection OS (IPD-OS)} (Since July 08)\\
+						  IPD-OS is distributed OS monitoring tool for Oracle RAC clusters. It monitors and analyzes different
+						  OS parameters on all the machines of a cluster, alerts in case of something go wrong. It also allows
+						  root cause analysis and diagnose of faulty machine. I have worked on design, documentation, coding,
+						  debugging, performance evaluation, QA and client interaction and other software development process.
+						  This work involves C, Perl, IPC, threads, process management, sockets, distributed programming etc.
+
+					  \item {\bf M.Tech. Thesis} \\
+					  Title: {\bf Implementation of WiFiRe (WiFi-Rural Extension) MAC}\\
+					  WiFiRe uses the widely available, and highly cost-reduced WiFi(802.11) chip-sets and a single channel, multi sector TDD MAC using directional antennas for point to multi-point communication (similar to WiMAX 802.16d). WiFiRe provides long range affordable wireless connectivity for rural areas. This project was in collaboration with IISc and IIT Madras. I worked on protocol and networking aspects for this project. We designed and developed prototype for this new MAC protocol which is similar to WiMAX. I worked on C, sockets, PCAP, IPC, MAC, wireless device drivers, NIC interrupts, QoS, scheduler design, network hardware behavior, antenna design and other such technologies during this project.
+
+	
+					  \item {\bf Summer Internship: Intel Research}\\
+					  Title: {\bf Enhancement of MAC in Intel’s WiMax-802.16d board}\\
+					  Added MAC functionalities such as point-to-multi-point support and QoS scheduler. This chip is targeted for cheaper WiMAX in developing countries with low bandwidth and stationary node support
+
+                     \item {\bf M. Tech. Seminar} \\
+					 Title: {\bf Technologies for Communication in rural areas}\\
+	Field project at Timbaktu, AP (www.timbaktu.org) to establish wireless connectivity. 802.11 based cheap devices were used to enable voice and data communication within village. Extension of PSTN lines using VoIP on wireless network with software based PBX. Amida Simputer, laptops, PCs and normal telephones were used as communication devices 
+
+	                \item {\bf BE project at DeepRootLinux}, Bangalore\\
+				Title: {\bf Development of MUA components} \\
+				Study of web mail system based on CGI and PHP. Development of Mail User Agent components which interact with SMTP and IMAP servers\\
+				Tools: C, CGI, FLATE library, LDAP APIs, MTA-qmail
+
+					  \end{itemize}
+
+
+					  \section{ACADEMIC PROJECTS}
+
+					  \begin{itemize}
+					  \item {\bf Voice aAqua}\\
+						aAqua (www.aaqua.org) is online multilingual agriculture portal by IIT Bombay and Government of India dedicated to farmers who can ask their doubts and get answers online. We added new functionality by which farmers can ask questions using telephone or mobile. Their questions get recorded as voicemail, posted on aAqua portal for answers and experts get email with attachment as voice file\\
+	Tools: Perl, PHP, AGI scripts, SIP-PSTN gateways, SMTP servers.
+					  
+					  \item {\bf Mobitrade}
+					  Developed a mobile based tool to get stock updates captured from Sensex website. Members can buy and sell stocks using their PIN numbers. Server sends periodic updates to mobile using WAP. Database is personalized according to each user’s requirement\\
+					  Tools: J2ME, MIDP, Java Servlets, MySQL
+					  \end{itemize}
+\section{EXTRA CURRICULAR ACTIVITIES}
+\begin{itemize}
+\item Class Representative of M. Tech. 2005 batch of 50 students at IIT Bombay
+\item Coordinator of Technical Committee of 12 members at Convergence-2007,IIT Bombay
+\item A level certificate of NCC 1998 batch
+\item Certification of IBM-WSAD professional developer in 2003
+\item Member of Nisarg Club to generate awareness about science in school kids
+\end{itemize}
+
+					  \end{resume} 
+					  \end{document}
+
