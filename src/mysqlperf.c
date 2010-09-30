@@ -363,7 +363,7 @@ int main()
   printf(" gettime %lu\n", foo.tv_sec);
 
   clean_tables(conn);
-  nu_bulk = 10;
+  nu_bulk = 20;
 
   i = 1;
   printf("Insert for %d nodeviews with", LOOP_COUNT);
