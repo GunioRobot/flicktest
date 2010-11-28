@@ -4,3 +4,9 @@ README is at root of eclipse and rest of source code files are moved to src dire
 
 Contact: jac099 [at] yahoo.com
 
+
+Some basic git commands:
+1. git status - know the status of all files
+2. git pull - pull files from hub
+3. git commit -a - check-in all files locally
+4. git push origin master - check-in files on server
