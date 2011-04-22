@@ -8,6 +8,7 @@ set smartindent
 set showmatch
 set incsearch
 set ruler
+cmap w!! %!sudo tee > /dev/null %
 
 filetype plugin on
 set ofu=syntaxcomplete#Complete
