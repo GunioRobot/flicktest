@@ -1,5 +1,6 @@
+IDIR =../include 
 CC=gcc
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -I$(IDIR)
 LDFLAGS=
 SOURCES=parsechar.c 
 OBJECTS=$(SOURCES:.c=.o)
@@ -12,6 +13,8 @@ $(EXECUTABLE): $(OBJECTS)
 
 .cpp.o:
 	$(CC) $(CFLAGS) $< -o $@
+clean:
+	rm -rf *o parsechar
 
 
 
