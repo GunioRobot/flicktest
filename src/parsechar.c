@@ -4,14 +4,15 @@
 int main()
 {
   char *c;
-  int i = 0;
+  //int i = 0;
   char *str = "gabchcfgajbdghfjiyfg";
-  char *chstr = "ghj";
-  LL *root = NULL;
+  //char *chstr = "ghj";
+  //LL *root = NULL;
   LLmeta *lm = NULL;
   HT *ht = NULL;
   LLinit(&lm);
   ht = hashInit(lm);
+
 
   
   for(c = str ; *c != '\0'; c++)
