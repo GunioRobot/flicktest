@@ -1,30 +1,13 @@
 #!/usr/bin/python -tt
-# Copyright 2010 Google Inc.
-# Licensed under the Apache License, Version 2.0
-# http://www.apache.org/licenses/LICENSE-2.0
-
-# Google's Python Class
-# http://code.google.com/edu/languages/google-python-class/
-
-"""A tiny Python program to check that Python is working.
-Try running this program from the command line like this:
-  python hello.py
-  python hello.py Alice
-That should print:
-  Hello World -or- Hello Alice
-Try changing the 'Hello' to 'Howdy' and run again.
-Once you have that working, you're ready for class -- you can edit
-and run Python code; now you just need to learn Python!
-"""
 
 import sys
 from operator import itemgetter
 import MySQLdb
 import re
-import twitter
+#import twitter
 
-def twInit():
-  cl = twitter.Api()
+#def twInit():
+#cl = twitter.Api()
 
 
 def fastLongestPalindromes(seq):
@@ -67,7 +50,7 @@ def fastLongestPalindromes(seq):
       # d is the value l[j] must have in order for the palindrome
       # centered there to share the left edge with the last palindrome.
       # (Drawing it out is helpful to understanding why the - 1
-         # is there.)
+      # is there.)
       d = j - e - 1
       
       # We check to see if the palindrome at l[j] shares a left edge
@@ -103,9 +86,9 @@ def fastLongestPalindromes(seq):
   # Obviously, the last palindrome we're looking at can't grow any more.
   l.append(palLen)
 
-	# Traverse backwards starting from the second-to-last index up until
-	# we get l to size 2 * seqLen + 1. We can deduce from the loop invariants
-	# we have enough elements.
+  # Traverse backwards starting from the second-to-last index up until
+  # we get l to size 2 * seqLen + 1. We can deduce from the loop invariants
+  # we have enough elements.
   lLen = len(l)
   s = lLen - 2
   e = s - (2 * seqLen + 1 - lLen)
@@ -155,7 +138,7 @@ def Fileop():
   #traverse through all lines
   for fileLine in fileList:
     #print fileHandle.tell()	  
-     #words = map(lambda l: l.split(" "), fileLine)
+    #words = map(lambda l: l.split(" "), fileLine)
     #traverse each word in line now
     m = re.search("(\s*[^a]+\s+) (\w+)",fileLine)
     if m:
@@ -179,9 +162,8 @@ def Fileop():
         if word[-1] == "\n":
           str = word[:-1]
         else:
-          str = word
-        	  
-        all_words.append(str)  
+          str = word 
+          all_words.append(str)  
         if str in dct:
           dct[str] = dct[str] + 1
         else:
@@ -279,7 +261,7 @@ def main():
   #TODO: test
 
   print "Arpit"
-  twInit()
+  #twInit()
 
   fastLongestPalindromes("malayalam")
 
