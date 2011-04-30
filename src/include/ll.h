@@ -3,8 +3,8 @@
 typedef struct LLmeta
 {
   unsigned int count;
-  struct LL *head;
-  struct LL *tail;
+  struct LL    *head;
+  struct LL    *tail;
 }LLmeta;
 
 typedef struct LL
