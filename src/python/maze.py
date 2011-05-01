@@ -10,7 +10,7 @@ def main():
     name = 'World'
   print 'Hello', name
   a = []
-  gridsize = 5;
+  gridsize = 7;
   creategrid(gridsize, a)
   changemaze(gridsize, a)
   if (verifymaze(gridsize, a) != countcellinmaze(gridsize,a)):
@@ -34,16 +34,11 @@ def countcellinmaze(gridsize, a=[]):
 def verifycellinmaze(gridsize, a, row, col):
   if a[row][col] != 1:
     return 0
-  elif row > 0 and  a[row-1][col] != 1:
-    return 0
-  elif col > 0 and  a[row][col-1] != 1:
-    return 0
-  elif row < gridsize-1 and  a[row+1][col] != 1:
-    return 0
-  elif col < gridsize-1 and  a[row][col+1] != 1:
-    return 0
-  else:
+  elif (row > 0 and  a[row-1][col] == 1) or (col > 0 and  a[row][col-1] == 1) or (row < gridsize-1 and  a[row+1][col] == 1) or (col < gridsize-1 and  a[row][col+1] == 1):
     return 1
+  else:
+    print "invalid cell "+`row`+" "+`col`+""
+    return 0
 
 
 def verifymaze(gridsize, a=[]):
@@ -60,7 +55,7 @@ def changemaze(gridsize, a=[]):
   for i in xrange(gridsize):
     for j in xrange(gridsize):
       a[i][j] = random.randint(1,10)
-      if (a[i][j] > -1):
+      if (a[i][j] > 3):
         a[i][j] = 1
       else:
         a[i][j] = 0
