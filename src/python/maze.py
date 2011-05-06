@@ -1,51 +1,103 @@
-import sys
 import random
 import copy
 
 #Approach: Start is defined as 2, end is defined as 3.
 #          normal node is 1 and absent node is 0
 
-# Define a main() function that prints a little greeting.
 def main():
-  # Get the name from the command line, using 'World' as a fallback.
-  if len(sys.argv) >= 2:
-    name = sys.argv[1]
-  else:
-    name = 'World'
-  print 'Hello', name
+  loop = 100
+  for i in xrange(loop):
+    
+    a = []
+    gridsize = i/33 + 3;
+    #create grid of size gridsize
+    creategrid(gridsize, a)
+    
+    #fill some random 1 and 0
+    changemaze(gridsize, a)
+    startend = []
+    #generate start and end cell
+    genstartendinmaze(gridsize, a, startend)
+    
+    cell_visited = {}
+    cell_left = []
+    
+    cell_left.append(startend[2])
+    cell_left.append(startend[3])
+    
+    path_so_far = []
+    
+    
+    #make sure all cells are reachable
+    if (verifymaze(gridsize, a) != countvalidcellinmaze(gridsize,a)):
+      continue
+    else:
+      findpathinmaze(gridsize, a, startend[0], startend[1], cell_visited, cell_left, path_so_far)    
   
-  a = []
   
-  gridsize = 5;
-  #create grid of size gridsize
-  creategrid(gridsize, a)
+def findpathinmaze(gridsize, a, row, col, cell_visited_in, cell_left, path_so_far_in):
+  #cell_visited[startend[0]][startend[1]] = -1
   
-  #fill some random 1 and 0
-  changemaze(gridsize, a)
-  startend = []
-  #generate start and end cell
-  genstartendinmaze(gridsize, a, startend)
   
-  cell_visited = copy.deepcopy(a)
-  cell_left = copy.deepcopy(a)
+  if a[row][col] == 0:
+    return
   
-  path_so_far = []
-  path_so_far.append(startend[0])
-  path_so_far.append(startend[1])
+  if row == cell_left[0] and col == cell_left[1]:
+    if (len(cell_visited_in) == countvalidcellinmaze(gridsize,a)-1):
+      #path_so_far_in.append(row*10 + col)
+      #cell_visited_in[row*10 + col] = 1
+      print a
+      print "solution "+`path_so_far_in`+`row`+`col`
+      print "list " + `sorted(cell_visited_in)`+`row`+`col`
+      print "------------"
+      return
+      
+    else:
+      return
+      
   
-  #make sure all cells are reachable
-  if (verifymaze(gridsize, a) != countvalidcellinmaze(gridsize,a)):
-    print "unreachable cells"
-  else:
-    print "possibly valid grid"
-        
-  findpathinmaze(gridsize, a, startend, cell_visited, cell_left, path_so_far)    
-  print a  
-  print cell_visited
+  path_so_far_in.append(row*10 + col)
+  cell_visited_in[10*row + col] = 1
+  points = []
   
-def findpathinmaze(gridsize, a, startend, cell_visited, cell_left, path_so_far):
-  cell_visited[startend[0]][startend[1]] = -1
-  print path_so_far
+  
+  #traverse again
+  if row > 0:
+    points.append(row -1)
+    points.append(col)
+    cell_visited = copy.deepcopy(cell_visited_in)
+    path_so_far = copy.deepcopy(path_so_far_in)
+    if (points[0]*10+points[1] not in cell_visited_in):
+      findpathinmaze(gridsize, a, points[0], points[1], cell_visited, cell_left, path_so_far)
+  
+  points = []
+  if col > 0:
+    points.append(row)
+    points.append(col-1) 
+    cell_visited = copy.deepcopy(cell_visited_in)
+    path_so_far = copy.deepcopy(path_so_far_in)
+    if (points[0]*10+points[1] not in cell_visited):
+      findpathinmaze(gridsize, a, points[0], points[1], cell_visited, cell_left, path_so_far)
+  
+  points = []
+  if row < gridsize - 1:
+    points.append(row + 1) 
+    points.append(col)
+    cell_visited = copy.deepcopy(cell_visited_in)
+    path_so_far = copy.deepcopy(path_so_far_in)
+    if (points[0]*10+points[1] not in cell_visited_in):
+      findpathinmaze(gridsize, a, points[0], points[1], cell_visited, cell_left, path_so_far)
+  
+  points = []
+  
+  if col < gridsize - 1:
+    points.append(row)
+    points.append(col+1)
+    cell_visited = copy.deepcopy(cell_visited_in)
+    path_so_far = copy.deepcopy(path_so_far_in)
+    if (points[0]*10+points[1] not in cell_visited):
+      findpathinmaze(gridsize, a, points[0], points[1], cell_visited, cell_left, path_so_far)
+  
   
 
 def genstartendinmaze(gridsize, a, startend):
@@ -73,7 +125,7 @@ def verifycellinmaze(gridsize, a, row, col):
   elif (row > 0 and  a[row-1][col] >= 1) or (col > 0 and  a[row][col-1] >= 1) or (row < gridsize-1 and  a[row+1][col] >= 1) or (col < gridsize-1 and  a[row][col+1] >= 1):
     return 1
   else:
-    print "invalid cell "+`row`+" "+`col`+""
+    #print "invalid cell "+`row`+" "+`col`+""
     return 0
 
 
@@ -87,10 +139,11 @@ def verifymaze(gridsize, a=[]):
       
 
 def changemaze(gridsize, a=[]):
+  prob = 3
   for i in xrange(gridsize):
     for j in xrange(gridsize):
       a[i][j] = random.randint(1,10)
-      if (a[i][j] > 3):
+      if (a[i][j] > prob):
         a[i][j] = 1
       else:
         a[i][j] = 0
