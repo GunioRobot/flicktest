@@ -5,11 +5,11 @@ import copy
 #          normal node is 1 and absent node is 0
 
 def main():
-  loop = 100
+  loop = 10
   for i in xrange(loop):
     
     a = []
-    gridsize = i/33 + 3;
+    gridsize = i/10 + 4;
     #create grid of size gridsize
     creategrid(gridsize, a)
     
@@ -38,7 +38,6 @@ def main():
 def findpathinmaze(gridsize, a, row, col, cell_visited_in, cell_left, path_so_far_in):
   #cell_visited[startend[0]][startend[1]] = -1
   
-  
   if a[row][col] == 0:
     return
   
@@ -46,7 +45,8 @@ def findpathinmaze(gridsize, a, row, col, cell_visited_in, cell_left, path_so_fa
     if (len(cell_visited_in) == countvalidcellinmaze(gridsize,a)-1):
       #path_so_far_in.append(row*10 + col)
       #cell_visited_in[row*10 + col] = 1
-      print a
+      for i in xrange(gridsize):
+        print a[i]
       print "solution "+`path_so_far_in`+`row`+`col`
       print "list " + `sorted(cell_visited_in)`+`row`+`col`
       print "------------"
@@ -62,6 +62,8 @@ def findpathinmaze(gridsize, a, row, col, cell_visited_in, cell_left, path_so_fa
   
   
   #traverse again
+
+  #go above
   if row > 0:
     points.append(row -1)
     points.append(col)
@@ -69,7 +71,8 @@ def findpathinmaze(gridsize, a, row, col, cell_visited_in, cell_left, path_so_fa
     path_so_far = copy.deepcopy(path_so_far_in)
     if (points[0]*10+points[1] not in cell_visited_in):
       findpathinmaze(gridsize, a, points[0], points[1], cell_visited, cell_left, path_so_far)
-  
+
+  #go left
   points = []
   if col > 0:
     points.append(row)
@@ -79,6 +82,7 @@ def findpathinmaze(gridsize, a, row, col, cell_visited_in, cell_left, path_so_fa
     if (points[0]*10+points[1] not in cell_visited):
       findpathinmaze(gridsize, a, points[0], points[1], cell_visited, cell_left, path_so_far)
   
+  #go down
   points = []
   if row < gridsize - 1:
     points.append(row + 1) 
@@ -87,7 +91,8 @@ def findpathinmaze(gridsize, a, row, col, cell_visited_in, cell_left, path_so_fa
     path_so_far = copy.deepcopy(path_so_far_in)
     if (points[0]*10+points[1] not in cell_visited_in):
       findpathinmaze(gridsize, a, points[0], points[1], cell_visited, cell_left, path_so_far)
-  
+
+  #go right
   points = []
   
   if col < gridsize - 1:
@@ -98,8 +103,6 @@ def findpathinmaze(gridsize, a, row, col, cell_visited_in, cell_left, path_so_fa
     if (points[0]*10+points[1] not in cell_visited):
       findpathinmaze(gridsize, a, points[0], points[1], cell_visited, cell_left, path_so_far)
   
-  
-
 def genstartendinmaze(gridsize, a, startend):
   #generate start point
   startend.append(random.randint(0, gridsize-1))
