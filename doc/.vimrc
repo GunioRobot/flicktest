@@ -19,7 +19,7 @@ set wildmenu
 
 "filetype plugin on
 
-autocmd FileType c,cpp,pl,py setlocal tabstop=8 softtabstop=2 shiftwidth=2 cindent expandtab textwidth=76
+autocmd FileType c,cpp,pl,py,h setlocal tabstop=2 softtabstop=2 shiftwidth=2 cindent expandtab textwidth=76
 "autocmd FileType python set
 set nu
 set noai
