@@ -4,9 +4,9 @@
 #   3. Any live cell with more than three live neighbours dies, as if by overcrowding.
 #   4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
+
 def readinput(a):
   f = open('gameoflife_input.txt', 'r')
-  numlines = 0
   for line in f:
       a.append(line.split())
 
@@ -34,60 +34,65 @@ def countneighbour(i, j, a=[]):
 def changecell( i, j, value, b):
   #print b[i][j]
   b[i][j] = value
-    
-def gennextgrid(a=[]):  
-  b = []
-  b = [[] for i in range(0, len(a))]
 
+def printgrid(a):
+  for i in range(0, len(a)):
+    print a[i]
+  print "\n"  
+
+def calchash(a):
+  hash = ""
+  for i in range(0, len(a)):
+    for j in range (0, len(a)):
+      hash+=a[i][j]
+  return hash    
+            
+def gennextgrid(a, iter, gridhash):
+  if (iter == 0):
+    return
   
-  print b           
+  print iter
+  
+  gridhash[calchash(a)] = iter   
+  b = []
+  readinput(b)
+       
   for i in range(0, len(a)):
     for j in range(0, len(a[i])):  
       neighbours = countneighbour(i, j, a)
       if a[i][j] == "1":
         if neighbours > 3:
-          print "n1 " +`neighbours`
-          print i 
-          print j
           changecell(i, j, "0",b)
         elif neighbours > 1:  
-          print "n2 " +`neighbours`
-          print i 
-          print j
           changecell(i, j, "1",b)
         else:
-          print "n3 " +`neighbours`
-          print i 
-          print j
-          countneighbour(i, j, a)
           changecell(i, j, "0",b )
       else:
         if neighbours == 3:
-          print "n4 " +`neighbours`
-          print i 
-          print j
           changecell(i, j, "1",b)
-          
-  print b
+        else:
+          changecell(i, j, "0",b)
+                
+  printgrid(b)
+  iter-=1
+  if calchash(b) not in gridhash:
+    gennextgrid(b, iter, gridhash)
+  else:
+    print gridhash[calchash(b)]  
             
             
 def main():   
   a = []
+  iter = 50
+  gridhash = {}
   readinput(a)
   if (verifyinput(a)):
     exit(0)
-    
-  gennextgrid(a)  
+  printgrid(a)  
+
+  gennextgrid(a, iter, gridhash)  
   
   #print a  
-  
-
-
-  
-  
-  
-  
-
              
 # get main caller
 if __name__ == '__main__':
