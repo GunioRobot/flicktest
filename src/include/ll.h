@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <malloc.h>
 #include <string.h>
+
 typedef struct LLmeta
 {
   unsigned int count;
@@ -17,16 +18,14 @@ typedef struct LL
   //struct LL *right;
 }LL;
 
-/*
-int LLinit(LLmeta **lm);
+int LLinit(LLmeta**);
 
-LL* LLappend(LLmeta *lm, void *ele, unsigned int esize);
+LL* LLappend(LLmeta *, void *, unsigned int );
 
-int LLdelete(LLmeta *lm, LL *ele);
+int LLdelete(LLmeta *, void*, int (* comparator) (const void *, const void *));
 
-int LLtraverse(LL *root)
+int LLtraverse(LL *);
 
-int LLfind(LL *root,  void * value, 
-           int (* comparator) (const void *, const void *))
+LL* LLfind(LL *,  void *, 
+           int (* comparator) (const void *, const void *));
 
-           */
