@@ -1,5 +1,5 @@
-#include "ll.h"
-#include "hash.h"
+#include "../include/ll.h"
+#include "../include/hash.h"
 
 int main()
 {
