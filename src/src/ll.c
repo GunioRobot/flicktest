@@ -1,6 +1,6 @@
 #include "../include/ll.h"
 
-int LLinit(LLmeta **lm)
+int LLinit(LLmeta **lm, int (*fptr)(const void *, const void *))
 {
   LLmeta *temp = NULL;
 
@@ -12,6 +12,7 @@ int LLinit(LLmeta **lm)
   }
   temp->head = NULL;
   temp->tail = NULL;
+  //temp->fptr = fptr;
   *lm = temp;
 
   return 0;
@@ -100,29 +101,28 @@ int LLtraverse(LL *root)
 }
 
 
-LL* LLfind(LL *root,  void *value, 
-           int (* comparator) (const void *, const void *))
+LL* LLfind(LLmeta *lm, LL *root,  void *value, int (*fptr)(const void *, const void *))
 {
+  int i = 0;
   if (root !=NULL)
   {
-    //printf("%d %p    ", root->value, root);
-    if (comparator(root->element, value) == 0)
+    i = (*fptr)(root->element, value); 
+    if (i == 0)
     {
       return root;
     }
     else
-      return LLfind(root->next, value, comparator);
+      return LLfind(lm, root->next, value,fptr);
   }
   else
     return NULL;
 }
 
-int LLdelete(LLmeta *lm, void *value, 
-           int (* comparator) (const void *, const void *))
+int LLdelete(LLmeta *lm, void *value, int (*fptr)(const void *, const void *))
 {
   LL *del = NULL;
 
-  del = LLfind(lm->head, value, comparator);
+  del = LLfind(lm, lm->head, value, fptr); 
 
   if (del != NULL)
   {
