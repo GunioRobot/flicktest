@@ -11,7 +11,7 @@ int minheap_init(minheap **heap, unsigned int max_len, void *cmp, void *dis)
   if (max_len > HEAPMAXLEN)
     return MINHEAP_BARGS;
 
-  hp = (minheap*)malloc(sizeof(hp));
+  hp = (minheap*)malloc(sizeof(minheap));
   if (hp == NULL)
   {
     return MINHEAP_FAIL;
@@ -36,8 +36,7 @@ int minheap_add(minheap *hp, void *data, unsigned int size)
 
   void *temp = NULL;
 
-
-  temp = (void*)malloc(size);
+  temp = (void*)malloc(sizeof(size));
   memcpy(temp, data, size);  
   hp->data[(hp->len)+1] = temp;
   hp->len++;
@@ -79,9 +78,9 @@ int minheap_traverse(minheap *hp)
 {
   int i = 0;
 
-  for (i = 1; i < hp->len; i++)
+  for (i = 1; i < hp->len+1; i++)
   {
-    printf("%u :", i);
+    printf("%u: ", i);
     (*hp->dis)(hp->data[i]);
   }
   return MINHEAP_SUCC;

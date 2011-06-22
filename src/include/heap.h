@@ -7,9 +7,13 @@
 
 typedef struct minheap
 {
-  unsigned int len;
-  unsigned int max_len;
-  void *data[HEAPMAXLEN];
-  int (*cmp)(void*, void*);
-  int (*dis)(void*);
+  unsigned int len; /* current length */
+  unsigned int max_len; /*max allowed lenght of heap */
+  void *data[HEAPMAXLEN]; /* actual data */
+  int (*cmp)(void*, void*); /* compare function pointer */
+  int (*dis)(void*); /* display function pointer. Not used much */
 }minheap;
+
+int minheap_init(minheap **heap, unsigned int max_len, void *cmp, void *dis);
+int minheap_add(minheap *hp, void *data, unsigned int size);
+int minheap_traverse(minheap *hp);

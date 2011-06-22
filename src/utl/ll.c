@@ -27,7 +27,7 @@ LL* LLappend(LLmeta *lm, void *ele, unsigned int esize)
     printf("cant malloc1\n");
     return NULL;
   }
-  temp->element = (void*)malloc(sizeof(esize));
+  temp->element = (void*)malloc(esize);
   if(temp->element == NULL)
   {
     printf("cant malloc1\n");
