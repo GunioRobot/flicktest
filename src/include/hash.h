@@ -5,15 +5,14 @@
 
 typedef struct HT
 {
-  LLmeta *lm;
-  unsigned int count;
+  LLmeta* lm[HT_SIZE];
+  int count;
   //unsigned int nele[HT_SIZE];
-  LL* ele[HT_SIZE];
 }HT;
 
-HT* hashInit(LLmeta *lm);
+HT* hashInit();
 
-int hashgen(void *value);
+int hashgen(void *value, size_t vsize);
 
-int hashInsert(HT *htmeta, void *value);
+int hashInsert(HT *htmeta, void *value, size_t vsize);
 
