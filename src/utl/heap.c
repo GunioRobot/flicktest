@@ -3,6 +3,37 @@
 #include <stdlib.h>
 #include <string.h>
 
+void minheap_swap(void **data1, void **data2)
+{
+  void *temp;
+
+  temp = *data1;
+  *data1 = *data2;
+  *data2 = temp;
+  return;
+}
+
+int minheap_compare(minheap *hp, void *i, void *j)
+{
+  return (*(hp->cmp))(i, j);
+}
+
+int minheap_heapify(minheap *hp, unsigned int ele)
+{
+  unsigned parent = ele/2;
+  
+  if (parent == 0)
+    return MINHEAP_SUCC;
+
+  if (minheap_compare(hp, hp->data[parent], hp->data[ele]) > 0)
+  {
+    minheap_swap(&hp->data[parent], &hp->data[ele]);
+    minheap_heapify(hp, parent);
+  }
+  return MINHEAP_SUCC;
+}
+
+
 int minheap_init(minheap **heap, unsigned int max_len, void *cmp, void *dis)
 {
   int i = 0;
@@ -38,42 +69,13 @@ int minheap_add(minheap *hp, void *data, unsigned int size)
 
   temp = (void*)malloc(sizeof(size));
   memcpy(temp, data, size);  
-  hp->data[(hp->len)+1] = temp;
   hp->len++;
+  hp->data[hp->len] = temp;
+  minheap_heapify(hp, hp->len);
+
   printf("data added %d\n", *(int*)data);
   return MINHEAP_SUCC;
 }
-
-void minheap_swap(void *data1, void *data2)
-{
-  void *temp;
-
-  temp = data1;
-  data1 = data2;
-  data2 = temp;
-  return;
-}
-int minheap_compare(minheap *hp, void *i, void *j)
-{
-  return (*hp->cmp)(&i, &j);
-}
-
-int minheap_heapify(minheap *hp, unsigned int ele)
-{
-  unsigned parent = ele/2;
-  
-  if (parent == 0)
-    return MINHEAP_SUCC;
-
-  if (minheap_compare(hp, hp->data[parent], hp->data[ele]) > 0)
-  {
-    printf("heapified\n");
-    minheap_swap(hp->data[parent], hp->data[ele]);
-    minheap_heapify(hp, parent);
-  }
-  return MINHEAP_SUCC;
-}
-
 int minheap_traverse(minheap *hp)
 {
   int i = 0;
