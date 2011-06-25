@@ -7,6 +7,9 @@ typedef struct HT
 {
   LLmeta* lm[HT_SIZE];
   int count;
+  int (*cmp)(void*, void*); /* compare function pointer */
+  int (*dis)(void*); /* display function pointer. Not used much */
+
   //unsigned int nele[HT_SIZE];
 }HT;
 

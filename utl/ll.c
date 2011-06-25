@@ -1,6 +1,6 @@
 #include "../include/ll.h"
 
-int LLinit(LLmeta **lm, int (*fptr)(const void *, const void *))
+int LLinit(LLmeta **lm, void *cmpptr, void *disptr)
 {
   LLmeta *temp = NULL;
 
@@ -8,14 +8,15 @@ int LLinit(LLmeta **lm, int (*fptr)(const void *, const void *))
   if(temp == NULL)
   {
     printf("cant malloc1\n");
-    return -1;
+    return LL_FAIL;
   }
   temp->head = NULL;
   temp->tail = NULL;
-  //temp->fptr = fptr;
+  temp->cmpptr = cmpptr;
+  temp->disptr = disptr;
   *lm = temp;
 
-  return 0;
+  return LL_SUCC;
 }
 
 LL* LLappend(LLmeta *lm, void *ele, unsigned int esize)
@@ -35,7 +36,7 @@ LL* LLappend(LLmeta *lm, void *ele, unsigned int esize)
   }
 
   /* copy the element */
-  memcpy(temp->element, &ele, esize);
+  memcpy(temp->element, ele, esize);
 
   lm->count++;
   if(lm->head == NULL)
@@ -62,7 +63,7 @@ int LLdeletei(LLmeta *lm, LL *ele)
 {
   if (ele == NULL|| lm == NULL)
   {
-    return 1;
+    return LL_FAIL;
   }
   if (lm->head == ele)
   {
@@ -82,53 +83,60 @@ int LLdeletei(LLmeta *lm, LL *ele)
 
   /* delete element now */
   free(ele);
-  return 1;
+  return LL_SUCC;
 }
 
 
-int LLtraverse(LL *root)
+int LLtraverse(LLmeta *lm)
 {
-  if (root !=NULL )
-  {
-    printf("t %d ", *(int*)root->element);
-    return LLtraverse(root->next);
-  }
-  else
+  LL *root = NULL;
+
+  if (lm == NULL || lm->head == NULL)
   {
     printf("\n");
-    return 0;
+    return LL_FAIL;
   }
+
+  root = lm->head;
+  while (root !=NULL )
+  {
+    lm->disptr(root->element);
+    //printf("t %d ", *(int*)root->element);
+    root = root->next;
+  }
+  printf("\n");
+  return LL_SUCC;
 }
 
 
-LL* LLfind(LLmeta *lm, LL *root,  void *value, int (*fptr)(const void *, const void *))
+LL* LLfind(LLmeta *lm, LL *root,  void *value)
 {
   int i = 0;
   if (root !=NULL)
   {
-    i = (*fptr)(root->element, value); 
+    i = (*lm->cmpptr)(root->element, value); 
     if (i == 0)
     {
       return root;
     }
     else
-      return LLfind(lm, root->next, value,fptr);
+      return LLfind(lm, root->next, value);
   }
   else
     return NULL;
 }
 
-int LLdelete(LLmeta *lm, void *value, int (*fptr)(const void *, const void *))
+int LLdelete(LLmeta *lm, void *value)
 {
   LL *del = NULL;
 
-  del = LLfind(lm, lm->head, value, fptr); 
+  del = LLfind(lm, lm->head, value); 
 
   if (del != NULL)
   {
     return LLdeletei(lm, del);
   }
   else
-    return 1;
+    return LL_FAIL;
 }
 

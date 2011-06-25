@@ -1,7 +1,7 @@
 #include "../include/hash.h"
 #include "../include/ll.h"
 
-HT* hashInit(int (*fptr)(const void *, const void *))
+HT* hashInit(HT **hm, void *cmpfptr, void *disfptr)
 {
   int i = 0;
   HT *temp = NULL;
@@ -21,10 +21,10 @@ HT* hashInit(int (*fptr)(const void *, const void *))
       printf("cant malloc1\n");
       return NULL;
     }
-
   }
-  
-  //temp->count = 0;
+  temp->cmp = cmpfptr;
+  temp->dis = disfptr;
+  temp->count = 0;
 
   return temp;
 }

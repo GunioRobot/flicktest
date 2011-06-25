@@ -8,7 +8,6 @@ int minheap_compare(minheap *hp, void *i, void *j)
   return (*(hp->cmp))(i, j);
 }
 
-
 int minheap_verify(minheap *hp)
 {
   int i = 0;

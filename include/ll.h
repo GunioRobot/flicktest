@@ -2,14 +2,17 @@
 #include <malloc.h>
 #include <string.h>
 
-//typedef  int (*comparell) (const void *, const void *);
+#define LL_SUCC 0
+#define LL_FAIL 1
+
 
 typedef struct LLmeta
 {
   unsigned int count;
   struct LL    *head;
   struct LL    *tail;
-  int (*fptr) (const void *, const void *);
+  int (*cmpptr) (const void *, const void *);
+  int (*disptr) (const void *);
 }LLmeta;
 
 typedef struct LL
@@ -22,13 +25,13 @@ typedef struct LL
 }LL;
 
 
-int LLinit(LLmeta**, int (*fptr)(const void *, const void *));
+int LLinit(LLmeta**, void *cmpfptr, void *disptr);
 
 LL* LLappend(LLmeta *, void *, unsigned int );
 
-int LLdelete(LLmeta *, void *, int (*fptr)(const void *, const void *)); 
+int LLdelete(LLmeta *, void *); 
 
-int LLtraverse(LL *);
+int LLtraverse(LLmeta *);
 
-LL* LLfind(LLmeta*, LL *,  void *, int (*fptr)(const void *, const void *));
+LL* LLfind(LLmeta*, LL *,  void *);
 

@@ -35,8 +35,6 @@ int call_intheap()
     j = rand () % 1000;
     minheap_add(hp, &j, sizeof(j));
   }
-  printf("all data added\n");
-
 
   for (i = 0; i < 15; i++)
   {
