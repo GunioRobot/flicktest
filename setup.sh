@@ -11,5 +11,5 @@ gcc -g src/llcaller.c -o  bin/llcaller -L`pwd`/lib/ -llinkedlist
 gcc -g src/heapcaller.c -o  bin/heapcaller -L`pwd`/lib/ -lheap
 
 #Dont forget to keep LIB path in env variable 
-export LD_LIBRARY_PATH=/scratch/flicktest/src/lib/
+export LD_LIBRARY_PATH=/scratch/flicktest/lib/
 

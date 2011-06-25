@@ -1,4 +1,4 @@
-#define HEAPMAXLEN    100
+#define HEAPMAXLEN    10000
 
 #define MINHEAP_SUCC  0
 #define MINHEAP_FAIL  1
@@ -17,3 +17,4 @@ typedef struct minheap
 int minheap_init(minheap **heap, unsigned int max_len, void *cmp, void *dis);
 int minheap_add(minheap *hp, void *data, unsigned int size);
 int minheap_traverse(minheap *hp);
+int minheap_rmroot(minheap *hp, void *ele, unsigned int esize);
