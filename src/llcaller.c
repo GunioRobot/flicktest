@@ -1,4 +1,7 @@
 #include "../include/ll.h"
+#include <stdlib.h>
+#include <time.h>
+
 #define LL_STRLEN 10
 int disele(const void *ele1)
 {
@@ -31,7 +34,7 @@ int inLL()
   for (i = 0; i <30; i++)
     LLappend(lm, &i, sizeof(i));
 
-  for (i = 0; i <30; i+=2)
+  for (i = 0; i <30; i+=3)
     LLdelete(lm, &i);
 
   LLtraverse(lm);
@@ -57,12 +60,12 @@ int cmpelestr(const void *ele, const void *value)
 
 int inLLstr()
 {
-  LLmeta *lm = NULL;
-  int i = 0, j = 0;
-  char k[LL_STRLEN];
-  unsigned int iseed = (unsigned int)time(NULL);
-  srand (iseed);
+  LLmeta       *lm           = NULL;
+  int           i            = 0, j = 0;
+  char          k[LL_STRLEN];
+  unsigned int  iseed        = (unsigned int)time(NULL);
 
+  srand (iseed);
   LLinit(&lm, cmpelestr, diselestr);
 
   for (i = 0; i <30; i++)
@@ -84,5 +87,6 @@ int main()
 {
   inLL();
   inLLstr();
+  return 0;
 }
 

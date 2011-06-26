@@ -16,7 +16,6 @@ int minheap_verify(minheap *hp)
   {
     if (minheap_compare(hp, hp->data[i], hp->data[i/2]) < 0)
     {
-      printf(" error %d: ", i);
       (*hp->dis)(hp->data[i]);
       minheap_traverse(hp);
       exit(1);
@@ -30,7 +29,7 @@ void minheap_swap(void **data1, void **data2)
 {
   void *temp;
 
-  temp = *data1;
+  temp   = *data1;
   *data1 = *data2;
   *data2 = temp;
   return;
@@ -54,7 +53,7 @@ int minheap_heapify(minheap *hp, unsigned int ele)
 
 int minheap_init(minheap **heap, unsigned int max_len, void *cmp, void *dis)
 {
-  int i = 0;
+  int      i  = 0;
   minheap *hp = NULL;
 
   if (max_len > HEAPMAXLEN)
@@ -65,10 +64,10 @@ int minheap_init(minheap **heap, unsigned int max_len, void *cmp, void *dis)
   {
     return MINHEAP_FAIL;
   }
-  hp->len = 0;
+  hp->len     = 0;
   hp->max_len = max_len;
-  hp->cmp = cmp;
-  hp->dis= dis;
+  hp->cmp     = cmp;
+  hp->dis     = dis;
 
   for (i = 0; i < HEAPMAXLEN; i++)
   {
@@ -90,11 +89,10 @@ int minheap_add(minheap *hp, void *data, unsigned int size)
   hp->len++;
   hp->data[hp->len] = temp;
 
-  /*
-  printf("data added ");
+  /*printf("data added ");
   (*hp->dis)(hp->data[hp->len]);
-  printf("\n");
-*/
+  printf("\n");*/
+
   minheap_heapify(hp, hp->len);
 
   return minheap_verify(hp);
@@ -130,8 +128,8 @@ int minheap_findmin(minheap *hp, void **ele)
 
 int minheap_rheapify(minheap *hp, unsigned int ele)
 {
-  unsigned rchild = ele*2 +1, lchild = ele*2;
-  int cmp = 0;
+  unsigned int rchild = ele *2 +1, lchild = ele *2;
+  int          cmp    = 0;
 
   if (lchild <= hp->len && rchild <= hp->len)
   {
@@ -173,7 +171,7 @@ int minheap_rmroot(minheap *hp, void *ele, unsigned int esize)
   }
   memcpy(ele, hp->data[1], esize);
   free(hp->data[1]);
-  hp->data[1] = hp->data[hp->len];
+  hp->data[1]       = hp->data[hp->len];
   hp->data[hp->len] = NULL;
   hp->len--;
 

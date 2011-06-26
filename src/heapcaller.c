@@ -14,12 +14,7 @@ int display(void *data1)
 
 int compare(void *data1, void *data2)
 {
-  int i = 0;
-
-  i = *(int*)data1 - *(int*)data2;
-  /* printf("compare called %d %d %d\n", *(int*)data1, *(int*)data2, i);*/
-
-  return i;
+  return *(int*)data1 - *(int*)data2;
 }
 
 int call_intheap()

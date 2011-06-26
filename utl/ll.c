@@ -10,11 +10,11 @@ int LLinit(LLmeta **lm, void *cmpptr, void *disptr)
     printf("cant malloc1\n");
     return LL_FAIL;
   }
-  temp->head = NULL;
-  temp->tail = NULL;
+  temp->head   = NULL;
+  temp->tail   = NULL;
   temp->cmpptr = cmpptr;
   temp->disptr = disptr;
-  *lm = temp;
+  *lm          = temp;
 
   return LL_SUCC;
 }
@@ -52,9 +52,9 @@ LL* LLappend(LLmeta *lm, void *ele, unsigned int esize)
   {
     /* append in last, set prev pointer and make new element as tail */
     lm->tail->next = temp;
-    temp->prev = lm->tail;
-    temp->next = NULL;
-    lm->tail = temp;
+    temp->prev     = lm->tail;
+    temp->next     = NULL;
+    lm->tail       = temp;
   }
   return temp;
 }
@@ -109,10 +109,13 @@ int LLtraverse(LLmeta *lm)
 }
 
 
-LL* LLfind(LLmeta *lm, LL *root,  void *value)
+LL* LLfind(LLmeta *lm, void *value)
 {
   int i = 0;
-  if (root !=NULL)
+  LL *root = NULL;
+
+  root = lm->head;
+  while (lm != NULL && root !=NULL)
   {
     i = (*lm->cmpptr)(root->element, value); 
     if (i == 0)
@@ -120,17 +123,17 @@ LL* LLfind(LLmeta *lm, LL *root,  void *value)
       return root;
     }
     else
-      return LLfind(lm, root->next, value);
+      root = root->next; 
   }
-  else
-    return NULL;
+
+  return NULL;
 }
 
 int LLdelete(LLmeta *lm, void *value)
 {
   LL *del = NULL;
 
-  del = LLfind(lm, lm->head, value); 
+  del = LLfind(lm, value); 
 
   if (del != NULL)
   {

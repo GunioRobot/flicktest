@@ -8,7 +8,7 @@ gcc -shared -o lib/libheap.so heap.o
 
 #compile any code and link with library
 gcc -g src/llcaller.c -o  bin/llcaller -L`pwd`/lib/ -llinkedlist
-gcc -g src/heapcaller.c -o  bin/heapcaller -L`pwd`/lib/ -lheap
+gcc -g src/heapcaller.c -o  bin/heapcaller -L`pwd`/lib/ -lheap -llinkedlist
 
 #Dont forget to keep LIB path in env variable 
 export LD_LIBRARY_PATH=/scratch/flicktest/lib/

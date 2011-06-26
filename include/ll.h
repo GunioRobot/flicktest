@@ -8,20 +8,18 @@
 
 typedef struct LLmeta
 {
-  unsigned int count;
-  struct LL    *head;
-  struct LL    *tail;
-  int (*cmpptr) (const void *, const void *);
-  int (*disptr) (const void *);
+  unsigned int   count;
+  struct LL     *head;
+  struct LL     *tail;
+  int          (*cmpptr)  (const void *, const void *);
+  int          (*disptr)  (const void *);
 }LLmeta;
 
 typedef struct LL
 {
-  //int value;
-  void *element;
+  void      *element;
   struct LL *next;
   struct LL *prev;
-  //struct LL *right;
 }LL;
 
 
@@ -33,5 +31,5 @@ int LLdelete(LLmeta *, void *);
 
 int LLtraverse(LLmeta *);
 
-LL* LLfind(LLmeta*, LL *,  void *);
+LL* LLfind(LLmeta*, void *);
 
