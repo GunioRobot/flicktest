@@ -25,7 +25,7 @@ typedef struct LL
 
 int LLinit(LLmeta**, void *cmpfptr, void *disptr);
 
-LL* LLappend(LLmeta *, void *, unsigned int );
+LL* LLappend(LLmeta *, void *, unsigned int);
 
 int LLdelete(LLmeta *, void *); 
 

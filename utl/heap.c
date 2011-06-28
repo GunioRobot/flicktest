@@ -128,8 +128,8 @@ int minheap_findmin(minheap *hp, void **ele)
 
 int minheap_rheapify(minheap *hp, unsigned int ele)
 {
-  unsigned int rchild = ele *2 +1, lchild = ele *2;
-  int          cmp    = 0;
+  unsigned int rchild = ele *2 +1, lchild= ele *2;
+  int   cmp  = 0;
 
   if (lchild <= hp->len && rchild <= hp->len)
   {

@@ -14,6 +14,7 @@ int LLinit(LLmeta **lm, void *cmpptr, void *disptr)
   temp->tail   = NULL;
   temp->cmpptr = cmpptr;
   temp->disptr = disptr;
+  temp->count = 0;
   *lm          = temp;
 
   return LL_SUCC;
@@ -45,8 +46,8 @@ LL* LLappend(LLmeta *lm, void *ele, unsigned int esize)
     lm->head = temp;
     lm->tail = temp;
     /* set prev and next to itself in case of first record */
-    temp->prev = temp;
-    temp->next = temp;
+    temp->prev = NULL;
+    temp->next = NULL;
   }
   else
   {
@@ -67,12 +68,12 @@ int LLdeletei(LLmeta *lm, LL *ele)
   }
   if (lm->head == ele)
   {
-    lm->head = ele->next;
+    lm->head       = ele->next;
     lm->head->prev = NULL;
   }
   else if (lm->tail == ele)
   {
-    lm->tail = ele->prev;
+    lm->tail       = ele->prev;
     lm->tail->next = NULL;
   }
   else

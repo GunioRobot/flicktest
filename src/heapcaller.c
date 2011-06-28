@@ -43,6 +43,7 @@ int call_intheap()
   return 0;
 
 }
+
 int str_display(void *data1)
 {
   printf("%s", (char*)data1);
