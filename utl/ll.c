@@ -144,3 +144,12 @@ int LLdelete(LLmeta *lm, void *value)
     return LL_FAIL;
 }
 
+int LLstat(LLmeta *lm, unsigned int *count)
+{
+  if (lm != NULL)
+  {
+    *count = lm->count;
+    return LL_SUCC;
+  }
+  return LL_FAIL;
+}

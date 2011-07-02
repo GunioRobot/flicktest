@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <malloc.h>
 #include "ll.h"
-#define HT_SIZE 1023
+#define HT_SIZE 1024
 
 typedef struct HT
 {
@@ -13,8 +13,10 @@ typedef struct HT
 
 HT* hashInit();
 
-unsigned int hashgen(void *value, size_t vsize);
+unsigned int hashgen(unsigned char *value, size_t vsize);
 
 int hashInsert(HT *htmeta, void *value, size_t vsize);
 
 int hashFind(HT *ht, void *value, unsigned int vsize);
+
+int HashAnalyse(HT *ht, float *sdev); 
