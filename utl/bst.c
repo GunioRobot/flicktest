@@ -85,6 +85,25 @@ int BSTaddnode(bst_meta *bm, bst_node *parent, bst_node **node, void *data,
   else
     return BSTaddnode(bm, (*node)->element, &((*node)->left), data, dsize);
 }
+int BSTfindi(bst_meta *bm, bst_node *node, void *data)
+{
+  int i = 0;
+  i = (*bm->cmpptr)(data, node->element);
+
+  if (i == 0)
+    return BST_SUCC;
+  else if (i > 0)
+    return BSTfindi(bm, node->element, data);
+  else
+    return BSTfindi(bm, node->element, data);
+}
+
+
+
+int BSTfind(bst_meta *bm, void *data)
+{
+  return BSTfindi(bm, bm->root,data);
+}
 
 int BSTadd(bst_meta *bm, void *data, unsigned int dsize)
 {

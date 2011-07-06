@@ -34,6 +34,12 @@ int main()
   {
     BSTadd(bm, &i, sizeof(i));
   }
+
+  for (i = 0; i < 10; i+=2)
+  {
+    if (BSTfind(bm, &i) == BST_SUCC)
+      printf("element found %d\n", i);
+  }
   BSTdestroy(&bm);
   return 0;
 }
