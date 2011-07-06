@@ -60,30 +60,31 @@ LL* LLappend(LLmeta *lm, void *ele, unsigned int esize)
   return temp;
 }
 
-int LLdeletei(LLmeta *lm, LL *ele)
+int LLdeletei(LLmeta *lm, LL *node)
 {
-  if (ele == NULL|| lm == NULL)
+  if (node == NULL|| lm == NULL)
   {
     return LL_FAIL;
   }
-  if (lm->head == ele)
+  if (lm->head == node)
   {
-    lm->head       = ele->next;
+    lm->head       = node->next;
     lm->head->prev = NULL;
   }
-  else if (lm->tail == ele)
+  else if (lm->tail == node)
   {
-    lm->tail       = ele->prev;
+    lm->tail       = node->prev;
     lm->tail->next = NULL;
   }
   else
   {
-    ele->prev->next = ele->next;
-    ele->next->prev = ele->prev;
+    node->prev->next = node->next;
+    node->next->prev = node->prev;
   }
 
-  /* delete element now */
-  free(ele);
+  /* dnodete nodement now */
+  free(node->element);
+  free(node);
   return LL_SUCC;
 }
 
@@ -138,6 +139,7 @@ int LLdelete(LLmeta *lm, void *value)
 
   if (del != NULL)
   {
+    lm->count--;
     return LLdeletei(lm, del);
   }
   else
@@ -152,4 +154,38 @@ int LLstat(LLmeta *lm, unsigned int *count)
     return LL_SUCC;
   }
   return LL_FAIL;
+}
+
+int LLeledestroy(LL **node)
+{
+  if (node == NULL || *node == NULL)
+    return LL_SUCC;
+  else if((*node)->next == NULL)
+  {
+    free((*node)->element);
+    free(*node);
+    *node = NULL;
+    return LL_SUCC;
+  }
+  else
+  {
+    LLeledestroy(&(*node)->next);
+    free((*node)->element);
+    free(*node);
+    *node = NULL;
+  }
+  return LL_SUCC;
+}
+
+int LLdestroy(LLmeta **lm)
+{
+  if (*lm == NULL)
+    return LL_SUCC;
+  else
+  {
+    LLeledestroy(&((*lm)->head));
+    free(*lm);
+    *lm = NULL;
+    return LL_SUCC;
+  }
 }

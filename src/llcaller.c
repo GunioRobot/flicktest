@@ -31,13 +31,14 @@ int inLL()
 
   LLinit(&lm, cmpele, disele);
 
-  for (i = 0; i <30; i++)
+  for (i = 0; i <3; i++)
     LLappend(lm, &i, sizeof(i));
-
-  for (i = 0; i <30; i+=3)
-    LLdelete(lm, &i);
+/*
+  for (i = 0; i <3; i+=3)
+    LLdelete(lm, &i);*/
 
   LLtraverse(lm);
+  LLdestroy(&lm);
   return 0;
 }
 
@@ -68,7 +69,7 @@ int inLLstr()
   srand (iseed);
   LLinit(&lm, cmpelestr, diselestr);
 
-  for (i = 0; i <30; i++)
+  for (i = 0; i <300; i++)
   {
     for (j = 0; j < LL_STRLEN-2; j++)
     {
@@ -79,6 +80,7 @@ int inLLstr()
   }
 
   LLtraverse(lm);
+  LLdestroy(&lm);
   return 0;
 }
 
@@ -86,7 +88,7 @@ int inLLstr()
 int main()
 {
   inLL();
-  inLLstr();
+  //inLLstr();
   return 0;
 }
 

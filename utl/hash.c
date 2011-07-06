@@ -31,6 +31,20 @@ HT* hashInit(HT **hm, void *cmpfptr, void *disfptr)
   return temp;
 }
 
+int hashDestroy(HT **hm)
+{
+  int i = 0; 
+
+  for (i = 0; i < HT_SIZE; i++)
+  {
+    LLdestroy(&((*hm)->lm[i]));
+  }
+  free(*hm);
+  *hm = NULL;
+
+  return HT_SUCC;
+}
+
 unsigned int hashgen(unsigned char *value, size_t vsize)
 {
   unsigned int key = 0;
@@ -50,9 +64,10 @@ unsigned int hashgen(unsigned char *value, size_t vsize)
 
 int hashInsert(HT *ht, void *value, size_t vsize)
 {
+  unsigned int key = 0;
   if (hashFind(ht, value, vsize) > 0)
   {
-    unsigned int key = hashgen(value, vsize);
+    key = hashgen(value, vsize);
     LLappend(ht->lm[key], value, vsize);
     ht->count++;
     return 0;
@@ -63,7 +78,8 @@ int hashInsert(HT *ht, void *value, size_t vsize)
 
 int hashFind(HT *ht, void *value, unsigned int vsize)
 {
-  unsigned int key = hashgen(value, vsize);
+  unsigned int key = 0; 
+  key = hashgen(value, vsize);
   if(LLfind(ht->lm[key], value) != NULL)
   {
     return 0;
