@@ -1,9 +1,7 @@
 #include "../include/hash.h"
 
-#define HT_SUCC 0
-#define HT_FAIL 1
 
-HT* hashInit(HT **hm, void *cmpfptr, void *disfptr)
+HT* hashInit(HT **hm, void *cmpfptr, void *disfptr, unsigned int type)
 {
   int i = 0;
   HT *temp = NULL;
@@ -15,14 +13,31 @@ HT* hashInit(HT **hm, void *cmpfptr, void *disfptr)
     return NULL;
   }
 
-  for(i = 0; i < HT_SIZE; i++)
+  if (type == HT_LL)
   {
-    if(LLinit(&(temp->lm[i]), cmpfptr, disfptr) != 0)
+    for(i = 0; i < HT_SIZE; i++)
     {
-      printf("cant malloc1\n");
-      return NULL;
+      if(LLinit(&(temp->lm[i]), cmpfptr, disfptr) != 0)
+      {
+        printf("cant malloc1\n");
+        return NULL;
+      }
     }
+    temp->type = type;
   }
+  else if (type == HT_BST)
+  {
+   for(i = 0; i < HT_SIZE; i++)
+    {
+      if(BSTinit(&(temp->bm[i]), cmpfptr, disfptr) != BST_SUCC)
+      {
+        printf("cant malloc1\n");
+        return NULL;
+      }
+    }
+    temp->type = type;
+  }
+
   temp->cmp = cmpfptr;
   temp->dis = disfptr;
   temp->count = 0;
@@ -34,10 +49,19 @@ HT* hashInit(HT **hm, void *cmpfptr, void *disfptr)
 int hashDestroy(HT **hm)
 {
   int i = 0; 
-
-  for (i = 0; i < HT_SIZE; i++)
+  if ((*hm)->type == HT_LL)
   {
-    LLdestroy(&((*hm)->lm[i]));
+    for (i = 0; i < HT_SIZE; i++)
+    {
+      LLdestroy(&((*hm)->lm[i]));
+    }
+  }
+  else if ((*hm)->type == HT_BST)
+  {
+    for (i = 0; i < HT_SIZE; i++)
+    {
+      BSTdestroy(&((*hm)->bm[i]));
+    }
   }
   free(*hm);
   *hm = NULL;
@@ -68,24 +92,42 @@ int hashInsert(HT *ht, void *value, size_t vsize)
   if (hashFind(ht, value, vsize) > 0)
   {
     key = hashgen(value, vsize);
-    LLappend(ht->lm[key], value, vsize);
+
+    if (ht->type == HT_LL)
+      LLappend(ht->lm[key], value, vsize);
+    else if (ht->type == HT_BST)
+      BSTadd(ht->bm[key], value, vsize);
+
     ht->count++;
-    return 0;
+    return HT_SUCC;
   }
   else
-    return 1;
+    return HT_FAIL;
 }
 
 int hashFind(HT *ht, void *value, unsigned int vsize)
 {
   unsigned int key = 0; 
   key = hashgen(value, vsize);
-  if(LLfind(ht->lm[key], value) != NULL)
+  if (ht->type == HT_LL)
   {
-    return 0;
+    if(LLfind(ht->lm[key], value) != NULL)
+    {
+      return HT_SUCC;
+    }
+    else
+      return HT_FAIL;
   }
-  else
-    return 1;
+  else if (ht->type == HT_BST)
+  {
+    if(BSTfind(ht->bm[key], value) == BST_SUCC)
+    {
+      return HT_SUCC;
+    }
+    else
+      return HT_FAIL;
+  }
+  return HT_FAIL;
 }
 
 int HashAnalyse(HT *ht, float *sdev)
@@ -94,16 +136,33 @@ int HashAnalyse(HT *ht, float *sdev)
   float std_dev = 0, avg = 0;
 
   avg = ht->count/HT_SIZE;
-  
-  for (i = 0; i < HT_SIZE; i++)
-  {
-    LLstat(ht->lm[i], &count);
 
-    if (count > avg)
-      std_dev += (count - avg);
-    else
-      std_dev += (avg - count);
+  if (ht->type == HT_LL)
+  {
+    for (i = 0; i < HT_SIZE; i++)
+    {
+      LLstat(ht->lm[i], &count);
+
+      if (count > avg)
+        std_dev += (count - avg);
+      else
+        std_dev += (avg - count);
+    }
   }
+  else if (ht->type == HT_BST)
+  {
+    for (i = 0; i < HT_SIZE; i++)
+    {
+
+      BSTstat(ht->bm[i], &count);
+
+      if (count > avg)
+        std_dev += (count - avg);
+      else
+        std_dev += (avg - count);
+    }
+  }
+
   *sdev = (std_dev/HT_SIZE)/avg;
   return HT_SUCC;
 }

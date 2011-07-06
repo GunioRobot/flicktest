@@ -13,8 +13,8 @@ gcc -shared -o lib/libbst.so bst.o
 #compile any code and link with library
 gcc -g src/llcaller.c -o  bin/llcaller -L`pwd`/lib/ -llinkedlist
 gcc -g src/heapcaller.c -o  bin/heapcaller -L`pwd`/lib/ -lheap -llinkedlist
-gcc -g src/hashcaller.c -o  bin/hashcaller -L`pwd`/lib/ -lheap -llinkedlist -lhash
-gcc -g src/bstcaller.c -o  bin/bstcaller -L`pwd`/lib/ -lheap -llinkedlist -lhash -lbst
+gcc -g src/hashcaller.c -o  bin/hashcaller -L`pwd`/lib/ -lheap -llinkedlist -lhash -lbst
+gcc -g src/bstcaller.c -o  bin/bstcaller -L`pwd`/lib/ -lbst
 
 #Dont forget to keep LIB path in env variable 
 export LD_LIBRARY_PATH=/scratch/flicktest/lib/

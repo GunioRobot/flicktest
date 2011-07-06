@@ -1,7 +1,7 @@
 #include "../include/hash.h"
 #include <stdlib.h>
 
-#define MINHASH_STRLEN 10
+#define MINHASH_STRLEN 8
 int disele(const void *ele1)
 {
   if (ele1 == NULL)
@@ -27,32 +27,32 @@ int callint()
 {
   int i = 0, j = 0;
   HT *hm = NULL;
-  float std_dev = 0;
+  float std_dev = 0.0;
 
-  hashInit(&hm, cmpele, disele);
+  hashInit(&hm, cmpele, disele, HT_BST);
 
-  for (i = 0; i < 100000; i++)
+  for (i = 0; i < 10000; i++)
   {
     j = (rand () % 1234567);
     if(hashInsert(hm, &j, sizeof(j)) > 0)
     {
-      /*printf("%u:value already present:", i);
-      printf("%d\n", j);*/
+      printf("%u:value already present:", i);
+      printf("%d\n", j);
     }
   }
-  HashAnalyse(hm, &std_dev);
-  printf("std_dev: %f\n", std_dev);
-  hashDestroy(&hm);
-/*
-  for (i = 0; i < 500; i+=50)
+  for (i = 0; i < 50000; i++)
   {
     if(hashFind(hm, &i, sizeof(i)) == 0)
     {
-      printf("value found");
+      printf("value found:");
       disele(&i);
       printf("\n");
     }
-  }*/
+  }
+
+  HashAnalyse(hm, &std_dev);
+  printf("std_dev: %f\n", std_dev);
+  hashDestroy(&hm);
   return 0;
 }
 
@@ -75,9 +75,9 @@ int callstr()
   char k[MINHASH_STRLEN] = {'\0'};
   float std_dev = 0;
 
-  hashInit(&hm, str_compare, str_display);
+  hashInit(&hm, str_compare, str_display, HT_LL);
 
-  for (i = 1; i < 400000; i++)
+  for (i = 1; i < 4000; i++)
   {
     for (j = 0; j < MINHASH_STRLEN - 2; j++)
     {
@@ -90,7 +90,7 @@ int callstr()
       printf("%s\n", k);
     }
   }
-  for (i = 1; i < 400; i++)
+  for (i = 1; i < 400000; i++)
   {
     for (j = 0; j < MINHASH_STRLEN - 2; j++)
     {
