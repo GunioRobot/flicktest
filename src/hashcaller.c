@@ -77,7 +77,7 @@ int callstr()
 
   hashInit(&hm, str_compare, str_display);
 
-  for (i = 1; i < 400; i++)
+  for (i = 1; i < 400000; i++)
   {
     for (j = 0; j < MINHASH_STRLEN - 2; j++)
     {
@@ -90,7 +90,6 @@ int callstr()
       printf("%s\n", k);
     }
   }
-/*
   for (i = 1; i < 400; i++)
   {
     for (j = 0; j < MINHASH_STRLEN - 2; j++)
@@ -104,7 +103,7 @@ int callstr()
       str_display(k);
       printf("\n");
     }
-  }*/
+  }
   HashAnalyse(hm, &std_dev);
   hashDestroy(&hm);
   printf("std_dev: %f\n", std_dev);
