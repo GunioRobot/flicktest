@@ -38,6 +38,7 @@ int BSTdeletenode(bst_node **node)
   *node = NULL;
   return BST_SUCC;
 }
+
 int BSTdestroy(bst_meta **bm)
 {
   if (bm == NULL)
@@ -102,8 +103,6 @@ int BSTfindi(bst_meta *bm, bst_node *node, void *data)
     return BSTfindi(bm, node->right, data);
 }
 
-
-
 int BSTfind(bst_meta *bm, void *data)
 {
   return BSTfindi(bm, bm->root,data);
@@ -139,6 +138,7 @@ int BSTtraversali(bst_meta *bm, bst_node *node)
 
   return BST_SUCC;
 }
+
 int BSTtraversal(bst_meta *bm)
 {
   if (bm == NULL)
