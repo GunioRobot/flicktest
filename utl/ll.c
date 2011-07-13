@@ -189,3 +189,23 @@ int LLdestroy(LLmeta **lm)
     return LL_SUCC;
   }
 }
+
+int LLupdate(LLmeta *lm, void *newval, unsigned int vsize)
+{
+  int i = 0;
+  LL *root = NULL;
+
+  root = lm->head;
+  while (lm != NULL && root !=NULL)
+  {
+    i = (*lm->cmpptr)(root->element, newval); 
+    if (i == 0)
+    {
+      memcpy(root->element, newval, vsize);
+      return LL_SUCC;
+    }
+    else
+      root = root->next; 
+  }
+  return LL_FAIL;
+}

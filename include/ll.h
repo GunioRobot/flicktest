@@ -33,6 +33,8 @@ int LLtraverse(LLmeta *);
 
 LL* LLfind(LLmeta*, void *);
 
+int LLupdate(LLmeta*, void *, unsigned int);
+
 int LLstat(LLmeta *lm, unsigned int *count);
 
 int LLeledestroy(LL **ele);

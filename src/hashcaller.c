@@ -1,7 +1,7 @@
 #include "../include/hash.h"
 #include <stdlib.h>
 
-#define MINHASH_STRLEN 8
+#define MINHASH_STRLEN 6
 int disele(const void *ele1)
 {
   if (ele1 == NULL)
@@ -38,6 +38,7 @@ int callint()
     {
       printf("%u:value already present:", i);
       printf("%d\n", j);
+      hashupdate(hm, &j, sizeof(j));
     }
   }
   for (i = 0; i < 50000; i++)
@@ -88,6 +89,7 @@ int callstr()
     {
       printf("value already present:");
       printf("%s\n", k);
+      hashupdate(hm, &k, sizeof(k));
     }
   }
   for (i = 1; i < 400000; i++)

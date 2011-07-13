@@ -16,6 +16,8 @@ gcc -g src/heapcaller.c -o  bin/heapcaller -L`pwd`/lib/ -lheap -llinkedlist
 gcc -g src/hashcaller.c -o  bin/hashcaller -L`pwd`/lib/ -lheap -llinkedlist -lhash -lbst
 gcc -g src/bstcaller.c -o  bin/bstcaller -L`pwd`/lib/ -lbst
 
+#random code
+gcc -g src/findcomplement.c -o  bin/findcomplement -L`pwd`/lib/ -lhash -lbst -llinkedlist
 #Dont forget to keep LIB path in env variable 
 export LD_LIBRARY_PATH=/scratch/flicktest/lib/
 

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define LL_STRLEN 10
+#define LL_STRLEN 4
 int disele(const void *ele1)
 {
   if (ele1 == NULL)
@@ -76,7 +76,14 @@ int inLLstr()
       k[j] = 'a' + (rand () % 26);
     }
     k[j] = 0;
-    LLappend(lm, (void*)k, sizeof(k));
+    if (LLfind(lm, (void*)k) == NULL)
+    {
+      LLappend(lm, (void*)k, sizeof(k));
+    }
+    else
+    {
+      LLupdate(lm, (void*)k, sizeof(k));
+    }
   }
 
   LLtraverse(lm);
@@ -88,7 +95,7 @@ int inLLstr()
 int main()
 {
   inLL();
-  //inLLstr();
+  inLLstr();
   return 0;
 }
 

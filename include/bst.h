@@ -22,6 +22,7 @@ int BSTaddnode(bst_meta *bm, bst_node *parent, bst_node **node, void *data,
 int BSTinit(bst_meta **bm, void *cmpptr, void *disptr);
 int BSTadd(bst_meta *bm, void *data, unsigned int datasize);
 int BSTfind(bst_meta *bm, void *data);
+int BSTupdate(bst_meta *bm, void *data, unsigned int dsize);
 int BSTdestroy(bst_meta **bm);
 int BSTstat(bst_meta *bm, unsigned int *datasize);
 int BSTtraversal(bst_meta *bm);

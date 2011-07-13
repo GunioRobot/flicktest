@@ -166,3 +166,33 @@ int HashAnalyse(HT *ht, float *sdev)
   *sdev = (std_dev/HT_SIZE)/avg;
   return HT_SUCC;
 }
+
+int hashupdate(HT *ht, void *value, unsigned int vsize)
+{
+  unsigned int key = 0; 
+  key = hashgen(value, vsize);
+  if (ht->type == HT_LL)
+  {
+    if(LLfind(ht->lm[key], value) != NULL)
+    {
+      LLupdate(ht->lm[key], value, vsize);
+      return HT_SUCC;
+    }
+    else
+      return HT_FAIL;
+  }
+  else if (ht->type == HT_BST)
+  {
+    if(BSTfind(ht->bm[key], value) == BST_SUCC)
+    {
+      BSTupdate(ht->bm[key], value, vsize);
+      return HT_SUCC;
+    }
+    else
+      return HT_FAIL;
+  }
+  return HT_FAIL;
+}
+
+
+

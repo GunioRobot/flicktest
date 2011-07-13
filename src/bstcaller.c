@@ -1,7 +1,7 @@
 #include "../include/bst.h"
 #include <stdio.h>
 #include <stdlib.h>
-#define BST_STRLEN 7
+#define BST_STRLEN 5
 int disele(const void *ele1)
 {
   if (ele1 == NULL)
@@ -78,7 +78,14 @@ int bststr()
       k[j] = 'a' + (rand () % 26);
     }
     k[j] = 0;
-    BSTadd(bm, &k, sizeof(k));
+    if (BSTfind(bm, (void*)k) == BST_SUCC)
+    {
+      BSTupdate(bm, (void*)k, sizeof(k));
+    }
+    else
+    {
+      BSTadd(bm, &k, sizeof(k));
+    }
   }
 
   BSTtraversal(bm);

@@ -108,6 +108,30 @@ int BSTfind(bst_meta *bm, void *data)
   return BSTfindi(bm, bm->root,data);
 }
 
+int BSTupdatei(bst_meta *bm, bst_node *node, void *data, unsigned int vsize)
+{
+  int i = 0;
+  if (node == NULL)
+    return BST_FAIL;
+
+  i = (*bm->cmpptr)(node->element, data);
+
+  if (i == 0)
+  {
+    memcpy(node->element, data, vsize);
+    return BST_SUCC;
+  }
+  else if (i > 0)
+    return BSTupdatei(bm, node->left, data, vsize);
+  else
+    return BSTupdatei(bm, node->right, data, vsize);
+}
+
+int BSTupdate(bst_meta *bm, void *data, unsigned int vsize)
+{
+  return BSTupdatei(bm, bm->root, data, vsize);
+}
+
 int BSTstat(bst_meta *bm, unsigned int *count)
 {
   if (bm == NULL)
