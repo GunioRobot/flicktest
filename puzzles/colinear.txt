@@ -1,0 +1,4 @@
+Given n points find maximum number of collinear points ..focus on time & space complexity
+
+
+This is 3-sum problem. Worst can not be less than O(n^2).

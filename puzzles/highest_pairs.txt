@@ -1,0 +1,17 @@
+Given two sorted positive integer rrays A(n) and B(n). We define a set S = {(a,b) such that a in A and b in B}. Obviously there are n^2 elements in S. The value of such a pair is defined as Val(a,b) = a + b. Now we want to get the n pairs from S with largest values. The tricky part is that we need an O(n)
+algorithm.
+
+
+A     B
+100   134
+98    125
+90    120
+86    115
+80    103
+76    97
+70    90
+67    88
+
+N*log(N) algo is as below:
+Take an element from each array and add neighbours of elements in the max-heap of size N. Avoid duplication.
+
