@@ -19,6 +19,9 @@ gcc -g src/bstcaller.c -o  bin/bstcaller -L`pwd`/lib/ -lbst
 #random code
 gcc -g src/findcomplement.c -o  bin/findcomplement -L`pwd`/lib/ -lhash -lbst -llinkedlist
 gcc -g src/countsetbits.c -o  bin/countsetbits  
+gcc -g src/startserver.c -o  bin/startserver
+gcc -g src/startclient.c -o  bin/startclient
+gcc -g src/newchild.c -o  bin/newchild
 
 #Dont forget to keep LIB path in env variable 
 export LD_LIBRARY_PATH=/scratch/flicktest/lib/
