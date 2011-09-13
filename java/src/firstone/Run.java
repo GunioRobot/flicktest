@@ -1,4 +1,5 @@
 /**
+import java.util.list;
  * 
  */
 package firstone;
@@ -19,11 +20,14 @@ public class Run {
 		md = new MapDemo();
 		md.printMembers();
 		
-		MapDemo md1 = new MapDemo(50);
-		
+		MapDemo md1 = new MapDemo(50);		
 		md1.printMembers();
+		md1.Demo();
 		
-
+		ListDemo ld = new ListDemo();
+		ld.arrayDemo();
+		ld.LlDemo();
+		
 	}
 
 }
