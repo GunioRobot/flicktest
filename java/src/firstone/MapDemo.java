@@ -1,7 +1,6 @@
 package firstone;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 
@@ -58,7 +57,8 @@ public class MapDemo {
 		
 		for (Map.Entry<String, Integer> e: m.entrySet())
 		{
-			System.out.println("key "+e.getKey());
+			System.out.println("key "+e.getKey().concat("--")+" len "+e.getKey().length());
+			System.out.println("key "+e.getKey().trim()+" len "+e.getKey().length());
 			System.out.println("value "+e.getValue());
 		}
 		

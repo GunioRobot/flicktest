@@ -28,6 +28,14 @@ public class Run {
 		ld.arrayDemo();
 		ld.LlDemo();
 		
+		DateDemo dd = new DateDemo();
+		dd.Demo();
+		
+		System.out.println(Palindrom.isPalindrom("12321"));
+		System.out.println(Palindrom.isPalindrom("ab"));
+		System.out.println(Palindrom.isPalindrom("abc"));
+		System.out.println(Palindrom.isPalindrom("123456789876543212"));
+		
 	}
 
 }

@@ -17,6 +17,7 @@ gcc -g src/llcaller.c -o  bin/llcaller -L`pwd`/lib/ -llinkedlist
 gcc -g src/heapcaller.c -o  bin/heapcaller -L`pwd`/lib/ -lheap -llinkedlist
 gcc -g src/hashcaller.c -o  bin/hashcaller -L`pwd`/lib/ -lheap -llinkedlist -lhash -lbst
 gcc -g src/bstcaller.c -o  bin/bstcaller -L`pwd`/lib/ -lbst
+gcc -g src/bstinorder.c -o  bin/bstinorder -L`pwd`/lib/ -lbst
 gcc -g src/bcaller.c -o  bin/bcaller -L`pwd`/lib/ -lbsearch
 
 #random code

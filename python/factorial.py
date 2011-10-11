@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import sys
+from apport.fileutils import pr
 
 def findzerosbetter(fact):
   zeros = 0
@@ -11,6 +12,7 @@ def findzerosbetter(fact):
       break
     
   print zeros    
+  
   
 def main():
   

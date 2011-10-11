@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define BST_STRLEN 5
+
+/* display element */
 int disele(const void *ele1)
 {
   if (ele1 == NULL)
@@ -10,7 +12,7 @@ int disele(const void *ele1)
     return 0;
 }
 
-
+/* compare element of integer type */
 int cmpele(const void *ele1, const void *value)
 {
   if (ele1 == NULL || value == NULL)
@@ -23,6 +25,7 @@ int cmpele(const void *ele1, const void *value)
     return (*(int*)ele1 - *(int*)value);
 }
 
+/* Main caller for integer data */
 int bstint()
 {
   int i = 0, j = 0;
@@ -47,6 +50,7 @@ int bstint()
   return 0;
 }
 
+/* Display string element */
 int diselestr(const void *ele1)
 {
   if (ele1 == NULL)
@@ -55,7 +59,7 @@ int diselestr(const void *ele1)
     return 0;
 }
 
-
+/* compare strings */
 int cmpelestr(const void *ele, const void *value)
 {
   if (ele == NULL || value == NULL)
@@ -64,6 +68,7 @@ int cmpelestr(const void *ele, const void *value)
     return strcmp((char*)ele, (char*)value);
 }
 
+/* Main caller for string data */
 int bststr()
 {
   int i = 0, j = 0;
