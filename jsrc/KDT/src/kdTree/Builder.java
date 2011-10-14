@@ -2,7 +2,7 @@ package kdTree;
 
 public class Builder {
 	
-	static int rightorleft = 0; //0 - left 1 - right
+	int rightorleft = 0; //0 - left 1 - right
 	
 	public void AddNode(KdNode root, TwoDimObj o)
 	{

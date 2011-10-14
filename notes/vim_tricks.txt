@@ -1,0 +1,52 @@
+Writing:
+i            - start insert at this cursor
+I            - start insert at start of line 
+o            - start insert from next line
+O            - start insert from previous line
+a            - start insert after cursor
+A            - start insert at the end of line
+
+Editing:
+yy           - copy entire line
+3y           - copy these 3 lines
+v, select, y - copy selected text
+p            - paste after cursor
+P            - paste before cursor
+dd           - delete this line
+v, select, d - delete selected text
+ctrl+v       - block verbose mode
+ci(          - copy text inside ()
+ci[          - copy text inside []
+di(          - delete text inside ()
+.            - repeat last action
+==           - align select text or current line
+
+Reading:
+ma           - bookmark postion at given cursor
+`a           - goto a
+G            - bottom of file
+:0           - top of file
+{            - goto beginning of function
+}            - goto end of function
+w            - next word
+
+Search:
+/text-to-search : Search this text
+:%s/search/replace/g  - Search and replace given text in entire file
+:%s/search/replace/gc - Search and replace given text in entire file and confirm each replacement
+
+External commands:
+:!command    - execute command to given shell
+:.!command   - execute command and copy output here
+:!command %  - execute command on this file 
+
+Split:
+:sp <file-name>  - split VIM horizontally.
+:vsp <file-name> - split VIM vertically.
+ctrl+w+w         - traverse across all split windows
+
+Save:
+:w!           - save
+:q!           - exit without save
+:wq!          - save and exit
+:x!           - save and exit
