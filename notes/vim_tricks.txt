@@ -1,3 +1,6 @@
+Some basic command for my reference.
+Contact jac099 at yahoo dot com for any comments.
+
 Writing:
 i            - start insert at this cursor
 I            - start insert at start of line 
@@ -20,18 +23,25 @@ ci[          - copy text inside []
 di(          - delete text inside ()
 .            - repeat last action
 ==           - align select text or current line
+v, >>        - move right
+v, <<        - move left
 
 Reading:
-ma           - bookmark postion at given cursor
+ma           - bookmark postion at given cursor (can be used for a to z)
 `a           - goto a
 G            - bottom of file
 :0           - top of file
-{            - goto beginning of function
-}            - goto end of function
+[            - goto beginning of function
+]            - goto end of function
+{            - goto previous blank line  
+}            - goto next blank line
 w            - next word
+i,j,k,l       - cursor movement
 
-Search:
+
+Search:              
 /text-to-search : Search this text
+n               - next occurance of searched word
 :%s/search/replace/g  - Search and replace given text in entire file
 :%s/search/replace/gc - Search and replace given text in entire file and confirm each replacement
 

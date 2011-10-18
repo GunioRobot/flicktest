@@ -209,3 +209,23 @@ int LLupdate(LLmeta *lm, void *newval, unsigned int vsize)
   }
   return LL_FAIL;
 }
+int swap(LL **root)
+{
+  LL *one = NULL, *two = NULL;
+
+  if (root == NULL || *root == NULL || (*root)->next == NULL)
+    return LL_SUCC;
+
+  one = *root;
+  two = (*root)->next;
+  one->next = two->next;
+  two->next = one;
+  *root = two;
+  swap(&(one->next));
+  return LL_SUCC;
+}
+int LLswaptwo(LLmeta *lm)
+{
+  swap(&(lm->head));
+  return LL_SUCC;
+}

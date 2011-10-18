@@ -31,12 +31,14 @@ int inLL()
 
   LLinit(&lm, cmpele, disele);
 
-  for (i = 0; i <3; i++)
+  for (i = 0; i <30; i++)
     LLappend(lm, &i, sizeof(i));
 /*
   for (i = 0; i <3; i+=3)
     LLdelete(lm, &i);*/
 
+  LLtraverse(lm);
+  LLswaptwo(lm);
   LLtraverse(lm);
   LLdestroy(&lm);
   return 0;

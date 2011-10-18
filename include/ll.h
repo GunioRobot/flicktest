@@ -40,3 +40,5 @@ int LLstat(LLmeta *lm, unsigned int *count);
 int LLeledestroy(LL **ele);
 
 int LLdestroy(LLmeta **lm);
+
+int LLswaptwo(LLmeta *lm);
