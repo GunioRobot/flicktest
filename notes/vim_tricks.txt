@@ -21,6 +21,7 @@ ctrl+v       - block verbose mode
 ci(          - copy text inside ()
 ci[          - copy text inside []
 di(          - delete text inside ()
+             - you can replace ( with [ " < ' etc to get similar results
 .            - repeat last action
 ==           - align select text or current line
 v, >>        - move right
@@ -42,6 +43,7 @@ i,j,k,l       - cursor movement
 Search:              
 /text-to-search : Search this text
 n               - next occurance of searched word
+N               - previous occurance of searched word
 :%s/search/replace/g  - Search and replace given text in entire file
 :%s/search/replace/gc - Search and replace given text in entire file and confirm each replacement
 
