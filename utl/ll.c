@@ -229,3 +229,77 @@ int LLswaptwo(LLmeta *lm)
   swap(&(lm->head));
   return LL_SUCC;
 }
+
+LL* LLfindN(LL *head, int N)
+{
+  while (head != NULL && N > 0)
+  {
+    head = head->next;
+    N--;
+  }
+  return head;
+}
+
+void LLrev(LL *head, LL *last, LL **newhead)
+{
+  if (head == NULL)
+    return;
+
+  if (head->next == NULL)
+  {
+    *newhead = head;
+    return;
+  }
+  else if (head->next != NULL && head->next->next == last)
+  {
+    *newhead = head->next;
+    head->next->next = head;
+    return;
+  }
+
+  LLrev(head->next, last, newhead);
+  head->next->next = head;
+  return;
+}
+
+int LLswapNi(LL **head, LL *last)
+{
+  LL *temp = NULL;
+  LLrev(*head, last, &temp);
+  (*head)->next = last;
+  *head = temp;
+  return LL_SUCC;
+}
+
+int LLswapN(LLmeta *lm, int N)
+{
+  LL *head = lm->head;
+  LL *temp = NULL, *prev = NULL, *one = NULL, *oldhead = NULL;
+  int i = 0;
+
+  while(head != NULL)
+  {
+    if (prev != NULL)
+    {
+      prev->next = oldhead;
+    }
+    prev = one;
+    one = head;
+
+    temp = LLfindN(head, N);
+    LLswapNi(&head, temp);
+    if (i == 0)
+    {
+      lm->head = head;
+      i++;
+    }
+    oldhead = head;
+    head = temp;
+    if (head == NULL && prev != NULL)
+    {
+      prev->next = oldhead;
+    }
+  }
+
+  return LL_SUCC;
+}
