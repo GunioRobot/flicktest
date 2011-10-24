@@ -8,6 +8,7 @@ o            - start insert from next line
 O            - start insert from previous line
 a            - start insert after cursor
 A            - start insert at the end of line
+ctrl+p       - auto complete
 
 Editing:
 yy           - copy entire line
@@ -62,3 +63,9 @@ Save:
 :q!           - exit without save
 :wq!          - save and exit
 :x!           - save and exit
+
+
+plugins:
+
+C comments:
+v, \cm       - C style comment /* comment */

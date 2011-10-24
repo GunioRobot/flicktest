@@ -1,0 +1,288 @@
+
+Starting GDB and its arguments..
+------------------------------------
+gdb program
+gdb --args <exe> args...
+gdb program core
+gdb attach pid 
+
+--args
+-e exe
+-p pid
+-c core
+-x gdb-command file
+-batch
+-d directory
+
+alternatively do gdb then use file, exe, core etc...
+
+
+a) on start it looks at init file at home and processes command line options and
+operands
+b) init file from current dir
+c) process commands in file specified through  -x
+d)Reads the command history recorded in the history file
+
+
+
+
+history and logging
+---------------------
+
+set logging on
+Enable logging.
+
+set logging off
+Disable logging.
+
+set logging file file
+
+show logging
+
+set history filename fname
+set history save on/off
+set history expandsion on/off
+
+show history
+
+show commands
+
+
+running programs through gdb
+----------------------------
+
+a) compilation/args/env/working dir
+- compiling -g option
+- program arguments
+using --args or set args or through run...
+- program environment using
+show env
+set env var=<value>
+unset env var
+- program working dir
+pwd....
+cd <working dir>
+-path
+show path
+dir <blah>
+
+b) attaching to a running program
+gdb attach <pid> or gdb -p <pid>
+
+
+c) multithread analysis
+info threads
+thread apply [threadno/ALL] bt
+thread [threadno] --- switch between threads
+show print thread-events
+set print thread-events on/off
+
+
+
+break,watch, autodisplay, continue/step and signals
+---------------------------------------------------
+-break points
+a)
+break <lineno>
+b  <function>
+b ... if <cond>
+
+b)
+tbreak
+rbreak regex
+info break <no>
+
+- watch points
+watch <exp> -- written and changes
+rwatch <exp> -- read..
+awatch <exp> -- both read and written
+info watchpoints
+
+c) deleting, disable
+clear -- delete current break points
+clear <lineno>
+clear <function>
+
+
+delete <breakno> or <range> -- delete specifed break points
+
+disalbe/enable <brno>
+
+d) conditions
+condition <br> <exp> -- set condition on a break point
+condition <br> -- remove a condition
+
+ignore <br> <count> --- ignore count times
+
+e) commands
+
+commands <br>
+....'
+...commands...
+end
+
+f)until, finish
+
+g) signals
+
+info signals -- show all signals
+info signals <singal> -- info about that signal
+
+handle <signal> stop print pass
+info <signal>
+
+signal <signal> --- gives this signal to the program
+
+Examining the Stack
+-----------------------
+bt -- show bt
+br <n> -- show innermost n frames
+br <-n> -- show outer most frams
+bt full
+br full n/-n
+print also the local variables..
+
+fr <no> -- select a frame
+f --- show current frame
+up
+down
+
+info fr <no> --- detailed output
+info args
+info locals
+
+
+
+Examining Source Files
+-----------------------
+
+a) navigating
+info source
+info functions <regex>
+info variables  <regex>
+
+list <lineno>
+list <function>
+list 10
+list -10
+list +
+list -
+show listsize
+set listsize <count>
+
+b) searching
+
+search <regex>
+reverse-search <regex>
+
+c) setting source path
+show directories
+directory dirname
+dir --- unset every thing
+set substitute-path
+unset substitute-path
+show substitute-path
+
+d) view machine code
+info reg
+disas <function>
+disas <start-addr> <end-addr>
+
+
+Examining Data
+------------------
+ptype <var>
+whatis <var>
+
+a) printing
+p/fmt value
+
+printing
+p/x --int as hex p/ $pc
+
+p/d -- int as deci
+p/u --- unsign as deci
+p/o -- octal
+p/t ---binary(t-two)
+p/a <addr> --pritn hex value as well as nearest synbol as an offset
+or use
+info symbol <adr>
+p/c -- char
+p/f floating
+
+
+printf "",v1,v2
+
+
+b) examin mem
+x/nfu addr
+n - repeat cout
+f - fmt
+u - size (b-byte;h-halfwork;w-work;g-giantword)
+
+example:-
+x/1tb $pc
+ret
+ret
+
+c) auto display
+info display
+display expr
+display/fmt expr
+
+delete display <disnum>
+disable/enable display <disnum>
+
+d) values
+show values (show commands)
+show values n
+show values -n
+
+$ -- refers to last value
+
+p pctx
+p *$
+
+e) convenience variables
+show convenience
+
+set $itr=0
+p pctx->crfosmctx_MyName[$itr++]
+
+e) copy between memory and file
+dump fmt memory filename startadr endaddr
+restore file
+
+d) produce a core
+
+gcore file
+generate-core-file file
+
+
+
+Altering Execution
+--------------------
+
+set var <variable>=<value>
+set {int/char}<addrinhex>=<value>
+
+jump <lineno>
+or
+set $pc=<addr>
+
+return <exp> -- return with out actually executing the function and return the exp
+
+call <function>
+
+
+
+Custom commands
+-----------------
+- define add
+printf "Sum=%d", $arg0+$arg1
+end
+
+add 1 2
+
+- show user
+- can be added in .gdbinit file to automate stuff'

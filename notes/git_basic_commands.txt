@@ -1,0 +1,14 @@
+git clone <git repos path> - copy git repos to local directory
+git commit -a              - commit all changes locally
+git push origin master     - push changes to server (on master brannch)
+git pull                   - update local copy (sync with server)
+git checkout <file>        - discard changes
+git checkout -- .          - discard changes from all files
+git log <file>             - show all commit messages for given file (history)
+git show                   - show current changes
+git add <dir>              - add entire dir and its content to repos
+git add <file>             - add this file to repos
+git status                 - show current status of repos
+git rm <file>              - remove file from repos
+git mv <file>              - rename or move
+git grep <pattern>         - search for given pattern in repos (with -np for line number and function name)
