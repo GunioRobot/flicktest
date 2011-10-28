@@ -1,0 +1,6 @@
+-w   - word only
+-r   - recursive to directory
+-C 2 - print 2 lines above and below matching line as well
+-v   - invert match
+-i   - case in-sensitive
+-n   - display line number 
