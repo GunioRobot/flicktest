@@ -1,9 +1,25 @@
 package kdTree;
 
+/**
+ * @author jchandar
+ *
+ */
 public class Builder {
 	
 	int rightorleft = 0; //0 - left 1 - right
 	
+	/**
+	 * adds node to tree identified by root.    
+	                          
+	@param  root  root of the tree. 
+	 *  
+	                          
+	@param  o Object to be added
+	 *  
+	                          
+	@return      void
+	                         
+	 */	
 	public void AddNode(KdNode root, TwoDimObj o)
 	{
 		KdNode troot = null;
@@ -21,7 +37,18 @@ public class Builder {
 		}
 		return;
 	}
-	
+	/**
+	 * Find the parent where node will be inserted.    
+	                          
+	@param  root  root of the tree. Can be NULL for first call
+	 *  
+	                          
+	@param  o Object to be added
+	 *  
+	                          
+	@return      parent node where node will added
+	                         
+	 */
 	private KdNode FindTwoDPath(KdNode root, TwoDimObj o)
 	{
 		KdNode troot = root;

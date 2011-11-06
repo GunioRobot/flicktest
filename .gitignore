@@ -5,3 +5,5 @@ a.out
 *.pdf
 *metadata*
 *.class
+*.pyc
+*.cache*

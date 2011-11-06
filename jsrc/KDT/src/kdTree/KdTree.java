@@ -1,12 +1,15 @@
 package kdTree;
 
+
+
 public class KdTree {
 	
 	KdNode root;
-	Integer totalNodes;
+	Integer totalNodes = 0;
 	Builder b;
 	
-	public boolean isEmpty()
+	
+	public boolean isTreeEmpty()
 	{
 		if (root == null)
 			return true;
@@ -16,7 +19,7 @@ public class KdTree {
 	
 	public void AddNode(TwoDimObj o)
 	{
-		if (isEmpty())
+		if (isTreeEmpty())
 		{
 			// first node
 			root = new KdNode(o);
@@ -27,13 +30,18 @@ public class KdTree {
 			//children
 			b.AddNode(this.root, o);
 		}
+		
+		o.index = totalNodes;
+		
+		
+		this.totalNodes++;
 	}
 	public void Traverse()
 	{
 		inOrderTraverse(this.root);
 	}
 	
-	public void inOrderTraverse(KdNode r)
+	private void inOrderTraverse(KdNode r)
 	{
 		if (r!=null)
 		{
@@ -45,5 +53,5 @@ public class KdTree {
 			return;
 	}
 	
-
+	
 }

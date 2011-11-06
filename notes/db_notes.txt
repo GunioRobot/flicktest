@@ -1,0 +1,60 @@
+DB notes:
+
+
+SQL-PLUS:
+--------
+set feedback on  - give results of query
+set linesize 300 - display width to 300.
+
+
+
+
+
+
+
+Tuning:
+------
+SET AUTOTRACE ON - to explain query once finished. It will print result and then explanation
+explain plan for <sql_query> - store plan in sql file for given query
+@$ORACLE_HOME/rdbms/admin/utlxpls.sql - explain the plan queried from above
+
+
+
+
+Constraints:
+-----------
+select constraint_name from user_constraints; - show all primary keys etc
+
+
+
+
+
+Indexes:
+-------
+Syntax: CREATE INDEX idx_name ON table(col1, col2, ..);
+1. Its always good idea to create index after all the data is inserted. 
+This will be to applicable where data is usually read-only after inserted.
+2. Create index on column where values vary lot (for normal index)
+3. Create index on column where values vary very less (for bitmap index)
+4. After running query, see explanation of it (using set autotrace on). 
+5. If you see any TABLE ACCESS FULL, thats potential place to optimise)
+
+If you plan to query some column with function on it, you should create 'function based index' for that column.
+For exa: select * from student where UPPER(last_name) = UPPER('patel') kind of query, create function based index.
+
+
+
+
+Partitions:
+-----------
+CREATE TABLE tablename(
+  col1 NUMBER(10),
+    col2  DATE)
+PARTITION BY RANGE (col2)
+(PARTITION part1 VALUES LESS THAN (TO_DATE('01/01/2011', 'DD/MM/YYYY')),
+ PARTITION part2 VALUES LESS THAN (TO_DATE('01/01/2012', 'DD/MM/YYYY')),
+  PARTITION part2 VALUES LESS THAN (MAXVALUE));
+
+Try to create partition at the time of creating tables. 
+This will reduce pain in moving tables if partition is created on running table.
+

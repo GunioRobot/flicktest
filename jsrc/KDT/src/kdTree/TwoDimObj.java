@@ -1,9 +1,22 @@
 package kdTree;
 
+import java.util.Random;
+
 public class TwoDimObj {
 	
-	Integer x;
-	Integer y;
+	 int index;
+	 int x;
+	 int y;
+	
+	public Integer getX()
+	{
+		return this.x;
+	}
+	
+	public Integer getY()
+	{
+		return this.y;
+	}
 	
 	public TwoDimObj() {
 		// TODO Auto-generated constructor stub
@@ -32,5 +45,14 @@ public class TwoDimObj {
 	public void PrintPoint()
 	{
 		System.out.println("x "+this.x +" y "+this.y);
+	}
+	/* generate new random 2D point
+	 * with limit of 1000 on each dimension
+	 */
+	static TwoDimObj getPoint()
+	{
+		Random r = new Random();
+		TwoDimObj o = new TwoDimObj(r.nextInt(1000), r.nextInt(1000));
+		return o;
 	}
 }
