@@ -7,11 +7,6 @@ set feedback on  - give results of query
 set linesize 300 - display width to 300.
 
 
-
-
-
-
-
 Tuning:
 ------
 SET AUTOTRACE ON - to explain query once finished. It will print result and then explanation
@@ -19,20 +14,36 @@ explain plan for <sql_query> - store plan in sql file for given query
 @$ORACLE_HOME/rdbms/admin/utlxpls.sql - explain the plan queried from above
 
 
-
-
 Constraints:
 -----------
 select constraint_name from user_constraints; - show all primary keys etc
 
-
-
-
-
 Indexes:
 -------
+Indexes can be of various types:
+1. Dense index
+2. Sparse index
+Dense index has pointer from each key in index to every DB entry stored in disk.
+Sparse index has pointer from a key to starting of certain DB block. Manual disk traversal required once you reach specific block.
+
+
+Index could also be:
+1. B+ tree based
+2. Hash based
+B+ tree based indexes are default. They have resonably quick look-up and performs very well in range queries.
+Hash based indexes are useful for equality kind of query. This are easier to implement.
+
+Index could also be:
+1. Primary index (on candidate/primary key)
+2. Secondary index
+Primary index can have sub parts as single-column and multi-column index.
+Data is typically stored sequencially(using B+ tree and Linked-list) based on primary key.
+Secondary Key is usually implemented using hash based index.
+
+Multi-column indexes are implemented on first column and subsequence column are hash/range based.
+
 Syntax: CREATE INDEX idx_name ON table(col1, col2, ..);
-1. Its always good idea to create index after all the data is inserted. 
+1. Its good idea to create index after all the data is inserted if operation permits.
 This will be to applicable where data is usually read-only after inserted.
 2. Create index on column where values vary lot (for normal index)
 3. Create index on column where values vary very less (for bitmap index)

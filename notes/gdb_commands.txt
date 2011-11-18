@@ -285,4 +285,4 @@ end
 add 1 2
 
 - show user
-- can be added in .gdbinit file to automate stuff'
+- can be added in .gdbinit file to automate stuff
