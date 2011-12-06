@@ -1,5 +1,4 @@
-import datetime
-import BeautifulSoup
+from tw import twmessage
 
 from pymongo import Connection
 
@@ -8,6 +7,9 @@ def storeflightdata(querydate, journyedate, tocity, fromcity, flightlist):
     connection = Connection()
     db = connection.test_database
     collection = db.test_collection
+
+    #print db.collection_names()
+    #print collection
 
     for i in xrange(0,len(flightlist), 5):   
         pkey = []
@@ -18,28 +20,24 @@ def storeflightdata(querydate, journyedate, tocity, fromcity, flightlist):
         pkey.append(flightlist[i+1])
                     
         posts = db.posts
-        for post in posts.find("id"):
-            if post[0] == pkey:
+        for post in posts.find({"id": pkey}):
+            if (len(post) > 0):
                 break
-            
-        post = {"id":pkey,
-                "DoJ": journyedate,
-                "From": fromcity,
-                "To": tocity,
-                "Airline":flightlist[i],
-                "Time": flightlist[i+1],
-                "DoQ" : querydate,
-                "fare": flightlist[3],
-                "duration" : flightlist[2] 
-                }
-        posts.insert(post)
-        i+=5
+            else:
+                post = {"id":pkey,
+                        "DoJ": journyedate,
+                        "From": fromcity,
+                        "To": tocity,
+                        "Airline":flightlist[i],
+                        "Time": flightlist[i+1],
+                        "DoQ" : querydate,
+                        "fare": flightlist[3],
+                        "duration" : flightlist[2] 
+                        }
+                posts.insert(post)
+                break
         
-    print db.collection_names()
+    #for post in posts.find():
+        #print post
+        
     
-    
-    
-    
-    
-    
-    print "hello"

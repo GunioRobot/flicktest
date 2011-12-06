@@ -71,6 +71,8 @@ def getpage(finallist, journeydate, fromcity, tocity):
     strlist.append(journeydate)
     strlist.append("&class_1=E&ADT=1&CHD=0&INF=0&type=O&siteLanguage=en_IN&multiplyFactor=1&eVar45=SEM:")
     link =  "".join(strlist)
+    #print strlist
+    
     resp, content = h.request(link, "GET")
     tables = re.split("<table width", content)
     i = 0
