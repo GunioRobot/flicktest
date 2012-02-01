@@ -4,7 +4,7 @@
 int reverse(char *input)
 {
   int i = 0, end = 0;
-  char temp; 
+  char temp;
 
   end = strlen(input) - 1 ;
 

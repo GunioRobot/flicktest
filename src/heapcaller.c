@@ -4,7 +4,7 @@
 #include <time.h>
 #include <string.h>
 
-#define MINHEAP_STRLEN 20 
+#define MINHEAP_STRLEN 20
 
 int display(void *data1)
 {

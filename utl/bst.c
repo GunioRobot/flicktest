@@ -50,7 +50,7 @@ int BSTdestroy(bst_meta **bm)
   return BST_SUCC;
 }
 
-int BSTaddnode(bst_meta *bm, bst_node *parent, bst_node **node, void *data, 
+int BSTaddnode(bst_meta *bm, bst_node *parent, bst_node **node, void *data,
                      unsigned int dsize)
 {
   bst_node *temp = NULL;

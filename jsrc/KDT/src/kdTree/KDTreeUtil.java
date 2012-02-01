@@ -8,7 +8,7 @@ public class KDTreeUtil {
 	ArrayList<TwoDimObj> xarr;
 	ArrayList<TwoDimObj> yarr;
 	Integer totalNodes = 0;
-	
+
 	public boolean isEmpty()
 	{
 		if (xarr.size() == 0)
@@ -25,13 +25,13 @@ public class KDTreeUtil {
 	public void GetXsortedlist()
 	{
 		xarr = new ArrayList(orig);
-		Collections.sort(xarr, new Compare2DonX()); 
+		Collections.sort(xarr, new Compare2DonX());
 	}
 	public void GetYsortedlist()
 	{
 		yarr = new ArrayList(orig);
-		Collections.sort(yarr, new Compare2DonY()); 
-	}	
+		Collections.sort(yarr, new Compare2DonY());
+	}
 	public TwoDimObj getMidPointX()
 	{
 		TwoDimObj pt = this.xarr.remove(this.xarr.size()/2);

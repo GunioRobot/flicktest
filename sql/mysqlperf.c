@@ -20,14 +20,14 @@ int insert_proc(MYSQL *conn, int i, int nu_bulk)
   if (nu_bulk == 0)
   {
     while(j < 128)
-    { 
+    {
       time(&t1);
       sprintf(query, "INSERT INTO `IPD_benchmark`.`proc` (`clock`, `hostname`, `pid`"
               ", `pname`, `cpuper`, `ioper`, `mem`, `fd`, `rt`, `prio`) VALUES "
               "(%lu, 'dadvmn0433%u', %u, 'init', '20', '10', '5', '45', '35',"
               " '90');", t1, i, j);
 
-      if (mysql_query(conn, query)) 
+      if (mysql_query(conn, query))
       {
         fprintf(stderr, "%s\n", mysql_error(conn));
         //exit(1);
@@ -55,7 +55,7 @@ int insert_proc(MYSQL *conn, int i, int nu_bulk)
       }
       strcat(query, ";");
 
-      if (mysql_query(conn, query)) 
+      if (mysql_query(conn, query))
       {
         printf("insert_proc t1 %lu j %d i %d k %d\n", t1, j, i, k);
         printf("%s\n", query);
@@ -85,7 +85,7 @@ int insert_disk(MYSQL *conn, int i, int nu_bulk)
               " `diskid`, `diskname`, `ior`, `iowr`, `iowait`, `qlen`, "
               "`total_size`, `occupied`) VALUES (%lu%u, 'dadvmn0433%u', %u,"
               " 'sda1', '5', '6', '3', '7', '20000', '5000');", t1, j, i, j);
-      if (mysql_query(conn, query)) 
+      if (mysql_query(conn, query))
       {
         fprintf(stderr, "%s\n", mysql_error(conn));
         //exit(1);
@@ -114,7 +114,7 @@ int insert_disk(MYSQL *conn, int i, int nu_bulk)
       }
       strcat(query, ";");
 
-      if (mysql_query(conn, query)) 
+      if (mysql_query(conn, query))
       {
         printf("insert_disk t1 %lu j %d i %d k %d\n", t1, j, i, k);
         printf("%s\n", query);
@@ -146,7 +146,7 @@ int insert_nic(MYSQL *conn, int i, int nu_bulk)
               ", '123', '123', '123', '123', '123', '123', '123', '123', '123', "
               "'123', '123', '123', '123');", i, t1,  j);
 
-      if (mysql_query(conn, query)) 
+      if (mysql_query(conn, query))
       {
         fprintf(stderr, "%s\n", mysql_error(conn));
         //exit(1);
@@ -175,7 +175,7 @@ int insert_fs(MYSQL *conn, int i, int nu_bulk)
               "`pagein`, `pageout`, `pagetotal`) VALUES ('dadvmn0433%u', %lu,"
               " %u, 'ext3', '/root', '/mnt', 'ASM', '30000', '15000', '50',"
               " '40', '90');", i, t1, j);
-      if (mysql_query(conn, query)) 
+      if (mysql_query(conn, query))
       {
         fprintf(stderr, "%s\n", mysql_error(conn));
         //exit(1);
@@ -192,7 +192,7 @@ insert_misc(MYSQL *conn, int i, int nu_bulk)
 {
   clock_t start, end;
   double elapsed;
-  int j = 0; 
+  int j = 0;
   char query[QUERY_LEN];
 
   if (nu_bulk == 0)
@@ -204,7 +204,7 @@ insert_misc(MYSQL *conn, int i, int nu_bulk)
               " fifteen, sixteen, seventeen, eighteen, nineteen) values (%d0%d,1,"
               "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)" , i, j);
       //printf("%s\n", query);
-      if (mysql_query(conn, query)) 
+      if (mysql_query(conn, query))
       {
         fprintf(stderr, "%s\n", mysql_error(conn));
         //exit(1);
@@ -230,14 +230,14 @@ init_db(MYSQL **conn)
 
   /* Connect to database */
   if (!mysql_real_connect(*conn, server,
-                          user, password, database, 0, NULL, 0)) 
+                          user, password, database, 0, NULL, 0))
   {
     fprintf(stderr, "%s\n", mysql_error(*conn));
     exit(1);
   }
 
   /*
-  if (mysql_query(*conn, "show tables")) 
+  if (mysql_query(*conn, "show tables"))
   {
     fprintf(stderr, "%s\n", mysql_error(*conn));
     exit(1);
@@ -256,41 +256,41 @@ init_db(MYSQL **conn)
 clean_tables(MYSQL *conn)
 {
   /* send SQL query */
-  if (mysql_query(conn, "truncate table IPD")) 
+  if (mysql_query(conn, "truncate table IPD"))
   {
     fprintf(stderr, "%s\n", mysql_error(conn));
     //exit(1);
   }
   /* send SQL query */
-  if (mysql_query(conn, "truncate table FS")) 
-  {
-    fprintf(stderr, "%s\n", mysql_error(conn));
-    //exit(1);
-  }
-
-  /* send SQL query */
-  if (mysql_query(conn, "truncate table NIC")) 
+  if (mysql_query(conn, "truncate table FS"))
   {
     fprintf(stderr, "%s\n", mysql_error(conn));
     //exit(1);
   }
 
   /* send SQL query */
-  if (mysql_query(conn, "truncate table disk")) 
+  if (mysql_query(conn, "truncate table NIC"))
   {
     fprintf(stderr, "%s\n", mysql_error(conn));
     //exit(1);
   }
 
   /* send SQL query */
-  if (mysql_query(conn, "truncate table proc")) 
+  if (mysql_query(conn, "truncate table disk"))
+  {
+    fprintf(stderr, "%s\n", mysql_error(conn));
+    //exit(1);
+  }
+
+  /* send SQL query */
+  if (mysql_query(conn, "truncate table proc"))
   {
     fprintf(stderr, "%s\n", mysql_error(conn));
     //exit(1);
   }
 
 }
-int main() 
+int main()
 {
   int i = 0;
   //time_t start, end;
@@ -326,7 +326,7 @@ int main()
   gettimeofday(&foo, NULL);
   t2 = foo.tv_sec;
   printf(" time taken %lu\n", t2 - t1);
-  // Insert one table at a time. Single row in one query 
+  // Insert one table at a time. Single row in one query
 
   clean_tables(conn);
   gettimeofday(&foo, NULL);

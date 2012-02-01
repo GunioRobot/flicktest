@@ -5,6 +5,6 @@ echo "pid is $pid"
 lsof -p $pid
 tree /proc/$pid/
 
-echo 9 > /proc/sysrq-trigger 
-echo t > /proc/sysrq-trigger 
+echo 9 > /proc/sysrq-trigger
+echo t > /proc/sysrq-trigger
 

@@ -27,7 +27,7 @@ int LLinit(LLmeta**, void *cmpfptr, void *disptr);
 
 LL* LLappend(LLmeta *, void *, unsigned int);
 
-int LLdelete(LLmeta *, void *); 
+int LLdelete(LLmeta *, void *);
 
 int LLtraverse(LLmeta *);
 

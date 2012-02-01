@@ -29,7 +29,7 @@ typedef struct mgrid
 
 int parsefile(mgrid *mazegrid)
 {
-  FILE *inputFilePtr; 
+  FILE *inputFilePtr;
   char s[1000];
   int i = 0, nlines = 1, numc = 0, ncells = 0, rows = 0, cols = 0;
   int **grid;
@@ -91,7 +91,7 @@ int validatecell(mgrid *mazegrid, int i, int j)
   if (j < mazegrid->mgrid_ncols)
     temp+=mazegrid->mgrid_cells[i][j+1];
 
-  return temp;    
+  return temp;
 }
 
 int  validategrid(mgrid *mazegrid)
@@ -154,20 +154,20 @@ int init_cells(mgrid *mazegrid)
       mazegrid->mgrid_celldata[i][j].paths_from_left  = 0;
       mazegrid->mgrid_celldata[i][j].paths_from_right = 0;
 
-      mazegrid->mgrid_celldata[i][j].paths_from_above_len = 
+      mazegrid->mgrid_celldata[i][j].paths_from_above_len =
         malloc(sizeof(int) * mazegrid->mgrid_alivecells);
-      mazegrid->mgrid_celldata[i][j].paths_from_below_len = 
+      mazegrid->mgrid_celldata[i][j].paths_from_below_len =
         malloc(sizeof(int) * mazegrid->mgrid_alivecells);
-      mazegrid->mgrid_celldata[i][j].paths_from_left_len  = 
+      mazegrid->mgrid_celldata[i][j].paths_from_left_len  =
         malloc(sizeof(int) * mazegrid->mgrid_alivecells);
-      mazegrid->mgrid_celldata[i][j].paths_from_right_len = 
+      mazegrid->mgrid_celldata[i][j].paths_from_right_len =
         malloc(sizeof(int) * mazegrid->mgrid_alivecells);
       for (k = 0; k < mazegrid->mgrid_alivecells; k++)
       {
-        mazegrid->mgrid_celldata[i][j].paths_from_right_len[k] = 0; 
-        mazegrid->mgrid_celldata[i][j].paths_from_left_len[k] = 0; 
-        mazegrid->mgrid_celldata[i][j].paths_from_above_len[k] = 0; 
-        mazegrid->mgrid_celldata[i][j].paths_from_below_len[k] = 0; 
+        mazegrid->mgrid_celldata[i][j].paths_from_right_len[k] = 0;
+        mazegrid->mgrid_celldata[i][j].paths_from_left_len[k] = 0;
+        mazegrid->mgrid_celldata[i][j].paths_from_above_len[k] = 0;
+        mazegrid->mgrid_celldata[i][j].paths_from_below_len[k] = 0;
       }
 
     }
@@ -217,7 +217,7 @@ int copypaths(int path_so_far_res[][10], int path_so_far[][10], mgrid *mazegrid)
   return 0;
 }
 
-int findpaths(mgrid *mazegrid, int i, int j, int path_so_far[][10], 
+int findpaths(mgrid *mazegrid, int i, int j, int path_so_far[][10],
               int required_len)
 {
   int path_so_farl[10][10];
@@ -225,7 +225,7 @@ int findpaths(mgrid *mazegrid, int i, int j, int path_so_far[][10],
   int path_so_fara[10][10];
   int path_so_farb[10][10];
 
-  //printf("cell %u %u req %u r %u c %u\n", i, j, required_len, 
+  //printf("cell %u %u req %u r %u c %u\n", i, j, required_len,
     //mazegrid->mgrid_nrows, mazegrid->mgrid_ncols);
 
   if (mazegrid->mgrid_cells[i][j] == 3 && required_len == 0)
@@ -246,7 +246,7 @@ int findpaths(mgrid *mazegrid, int i, int j, int path_so_far[][10],
     printf("dead end %u\n", mazegrid->mgrid_alivecells);
     printpath(path_so_far, mazegrid);
     return 1;
-  } 
+  }
 
   path_so_far[i][j] = 1 ;
 
@@ -299,7 +299,7 @@ int init_path(mgrid *mazegrid, int path_so_far[][10])
       path_so_far[i][j] = 0;
     }
   }
-  
+
   return 0;
 }
 
@@ -363,8 +363,8 @@ int main()
   init_cells(&mazegrid);
   calcpath(&mazegrid, 7, 0, 0);
 
-  printf("startxy %u endxy %u alivecells %u\n", 
-         mazegrid.mgrid_startxy, mazegrid.mgrid_endxy, 
+  printf("startxy %u endxy %u alivecells %u\n",
+         mazegrid.mgrid_startxy, mazegrid.mgrid_endxy,
          mazegrid.mgrid_alivecells);
 
   return 0;

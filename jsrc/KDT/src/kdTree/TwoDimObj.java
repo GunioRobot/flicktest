@@ -3,25 +3,25 @@ package kdTree;
 import java.util.Random;
 
 public class TwoDimObj {
-	
+
 	 int index;
 	 int x;
 	 int y;
-	
+
 	public Integer getX()
 	{
 		return this.x;
 	}
-	
+
 	public Integer getY()
 	{
 		return this.y;
 	}
-	
+
 	public TwoDimObj() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public TwoDimObj(Integer x, Integer y) {
 		// TODO Auto-generated constructor stub
 		this.x = x;

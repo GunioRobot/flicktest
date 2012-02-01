@@ -119,13 +119,13 @@ LL* LLfind(LLmeta *lm, void *value)
   root = lm->head;
   while (lm != NULL && root !=NULL)
   {
-    i = (*lm->cmpptr)(root->element, value); 
+    i = (*lm->cmpptr)(root->element, value);
     if (i == 0)
     {
       return root;
     }
     else
-      root = root->next; 
+      root = root->next;
   }
 
   return NULL;
@@ -135,7 +135,7 @@ int LLdelete(LLmeta *lm, void *value)
 {
   LL *del = NULL;
 
-  del = LLfind(lm, value); 
+  del = LLfind(lm, value);
 
   if (del != NULL)
   {
@@ -198,14 +198,14 @@ int LLupdate(LLmeta *lm, void *newval, unsigned int vsize)
   root = lm->head;
   while (lm != NULL && root !=NULL)
   {
-    i = (*lm->cmpptr)(root->element, newval); 
+    i = (*lm->cmpptr)(root->element, newval);
     if (i == 0)
     {
       memcpy(root->element, newval, vsize);
       return LL_SUCC;
     }
     else
-      root = root->next; 
+      root = root->next;
   }
   return LL_FAIL;
 }

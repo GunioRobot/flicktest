@@ -5,26 +5,26 @@ package kdTree;
  *
  */
 public class Builder {
-	
+
 	int rightorleft = 0; //0 - left 1 - right
-	
+
 	/**
-	 * adds node to tree identified by root.    
-	                          
-	@param  root  root of the tree. 
-	 *  
-	                          
+	 * adds node to tree identified by root.
+
+	@param  root  root of the tree.
+	 *
+
 	@param  o Object to be added
-	 *  
-	                          
+	 *
+
 	@return      void
-	                         
-	 */	
+
+	 */
 	public void AddNode(KdNode root, TwoDimObj o)
 	{
 		KdNode troot = null;
 		troot = FindTwoDPath(root, o);
-		
+
 		if (rightorleft == 0)
 		{
 			troot.left = new KdNode(o);
@@ -38,16 +38,16 @@ public class Builder {
 		return;
 	}
 	/**
-	 * Find the parent where node will be inserted.    
-	                          
+	 * Find the parent where node will be inserted.
+
 	@param  root  root of the tree. Can be NULL for first call
-	 *  
-	                          
+	 *
+
 	@param  o Object to be added
-	 *  
-	                          
+	 *
+
 	@return      parent node where node will added
-	                         
+
 	 */
 	private KdNode FindTwoDPath(KdNode root, TwoDimObj o)
 	{
@@ -55,9 +55,9 @@ public class Builder {
 		KdNode yroot = null;
 		KdNode xroot = null;
 		TwoDimObj rvalue;
-		
+
     	while(troot != null)
-    	{		
+    	{
     		//search on Y axis
     		rvalue = troot.value;
     		if (o.placeRight(rvalue))
@@ -70,12 +70,12 @@ public class Builder {
     			yroot = troot.left;
     			rightorleft = 0;
     		}
-    		
+
     		if (yroot != null)
-    		{	
+    		{
     			//search X axis
     		  rvalue = yroot.value;
-    		
+
     		  if (o.placeTop(rvalue))
     		  {
     			  xroot = yroot.right;
@@ -86,10 +86,10 @@ public class Builder {
                   xroot = yroot.left;
                   rightorleft = 0;
     		  }
-    		  
+
     		  if (xroot!=null)
     		  {
-    			  troot = xroot; 		  
+    			  troot = xroot;
     		  }
     		  else
     		  {

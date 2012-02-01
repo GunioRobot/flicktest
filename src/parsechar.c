@@ -14,7 +14,7 @@ int main()
   ht = hashInit(lm);
 
 
-  
+
   for(c = str ; *c != '\0'; c++)
   {
     hashInsert(ht, (void*)c);

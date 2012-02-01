@@ -35,4 +35,4 @@ int main()
   }
   s3[i] = '\0';
   printf("string is %s\n",s3);
-} 
+}

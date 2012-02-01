@@ -9,5 +9,5 @@ public class Compare2DonY implements Comparator<TwoDimObj>{
 		return pt1.getY() - pt2.getY();
 	}
 
-	
+
 }

@@ -3,7 +3,7 @@ Contact jac099 at yahoo dot com for any comments.
 
 Writing:
 i            - start insert at this cursor
-I            - start insert at start of line 
+I            - start insert at start of line
 o            - start insert from next line
 O            - start insert from previous line
 a            - start insert after cursor
@@ -35,13 +35,13 @@ G            - bottom of file
 :0           - top of file
 [            - goto beginning of function
 ]            - goto end of function
-{            - goto previous blank line  
+{            - goto previous blank line
 }            - goto next blank line
 w            - next word
 i,j,k,l       - cursor movement
 
 
-Search:              
+Search:
 /text-to-search : Search this text
 n               - next occurance of searched word
 N               - previous occurance of searched word
@@ -51,7 +51,7 @@ N               - previous occurance of searched word
 External commands:
 :!command    - execute command to given shell
 :.!command   - execute command and copy output here
-:!command %  - execute command on this file 
+:!command %  - execute command on this file
 
 Split:
 :sp <file-name>  - split VIM horizontally.

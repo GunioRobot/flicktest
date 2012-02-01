@@ -30,6 +30,6 @@ int hashInsert(HT *htmeta, void *value, size_t vsize);
 
 int hashFind(HT *ht, void *value, unsigned int vsize);
 
-int HashAnalyse(HT *ht, float *sdev); 
+int HashAnalyse(HT *ht, float *sdev);
 
 int hashDestroy(HT **hm);

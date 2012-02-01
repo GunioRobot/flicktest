@@ -19,7 +19,7 @@
 
 #define BACKLOG 10     // how many pending connections queue will hold
 
-#define MAXDATASIZE 100 // max number of bytes we can get at once 
+#define MAXDATASIZE 100 // max number of bytes we can get at once
 void sigchld_handler(int s)
 {
     while(waitpid(-1, NULL, WNOHANG) > 0);

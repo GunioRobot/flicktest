@@ -5,7 +5,7 @@ int bsearch(int a[], int count, int find)
 {
   int l = 0, u = count -1;
 
-  int m = 0; 
+  int m = 0;
 
   while(u>=l)
   {

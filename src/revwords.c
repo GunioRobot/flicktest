@@ -7,7 +7,7 @@ char *strreveser(char *input)
   int i = 0, end = 0;
 
   end = strlen(input)-1;
-  
+
   for (i = 0; i < strlen(input)/2; i++)
   {
     c = input[i];

@@ -48,7 +48,7 @@ HT* hashInit(HT **hm, void *cmpfptr, void *disfptr, unsigned int type)
 
 int hashDestroy(HT **hm)
 {
-  int i = 0; 
+  int i = 0;
   if ((*hm)->type == HT_LL)
   {
     for (i = 0; i < HT_SIZE; i++)
@@ -107,7 +107,7 @@ int hashInsert(HT *ht, void *value, size_t vsize)
 
 int hashFind(HT *ht, void *value, unsigned int vsize)
 {
-  unsigned int key = 0; 
+  unsigned int key = 0;
   key = hashgen(value, vsize);
   if (ht->type == HT_LL)
   {
@@ -169,7 +169,7 @@ int HashAnalyse(HT *ht, float *sdev)
 
 int hashupdate(HT *ht, void *value, unsigned int vsize)
 {
-  unsigned int key = 0; 
+  unsigned int key = 0;
   key = hashgen(value, vsize);
   if (ht->type == HT_LL)
   {

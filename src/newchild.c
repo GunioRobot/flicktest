@@ -10,12 +10,12 @@ int main(void)
   pid_t pid;
   int rv;
 
-  switch(pid = fork()) 
+  switch(pid = fork())
   {
     case -1:
       perror("fork");  /* something went wrong */
       exit(1);         /* parent exits */
-  
+
     case 0:
       printf(" CHILD: This is the child process!\n");
       printf(" CHILD: My PID is %d\n", getpid());
@@ -24,7 +24,7 @@ int main(void)
       scanf(" %d", &rv);
       printf(" CHILD: I'm outta here!\n");
       exit(rv);
-  
+
     default:
       printf("PARENT: This is the parent process!\n");
       printf("PARENT: My PID is %d\n", getpid());

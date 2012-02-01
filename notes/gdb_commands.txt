@@ -4,7 +4,7 @@ Starting GDB and its arguments..
 gdb program
 gdb --args <exe> args...
 gdb program core
-gdb attach pid 
+gdb attach pid
 
 --args
 -e exe

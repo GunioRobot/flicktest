@@ -38,7 +38,7 @@ void minheap_swap(void **data1, void **data2)
 int minheap_heapify(minheap *hp, unsigned int ele)
 {
   unsigned parent = ele/2;
-  
+
   if (parent == 0)
     return MINHEAP_SUCC;
 
@@ -85,7 +85,7 @@ int minheap_add(minheap *hp, void *data, unsigned int size)
     return MINHEAP_FULL;
 
   temp = malloc(size);
-  memcpy(temp, data, size);  
+  memcpy(temp, data, size);
   hp->len++;
   hp->data[hp->len] = temp;
 
@@ -133,7 +133,7 @@ int minheap_rheapify(minheap *hp, unsigned int ele)
 
   if (lchild <= hp->len && rchild <= hp->len)
   {
-    cmp = minheap_compare(hp, hp->data[lchild], hp->data[rchild]); 
+    cmp = minheap_compare(hp, hp->data[lchild], hp->data[rchild]);
     if (cmp > 0)
     {
       if (minheap_compare(hp, hp->data[ele], hp->data[rchild]) > 0)
@@ -142,7 +142,7 @@ int minheap_rheapify(minheap *hp, unsigned int ele)
         return minheap_rheapify(hp, rchild);
       }
     }
-    else 
+    else
     {
       if (minheap_compare(hp, hp->data[ele], hp->data[lchild]) > 0)
       {

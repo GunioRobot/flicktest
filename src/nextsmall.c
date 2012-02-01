@@ -18,7 +18,7 @@ main()
 {
   int num;
   num = 3;
-  printf(" %d Next higher number having same no." 
+  printf(" %d Next higher number having same no."
           "of 1's in it binary"
           "representation\n",snoob(num));
 }

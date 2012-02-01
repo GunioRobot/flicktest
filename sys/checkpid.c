@@ -9,7 +9,7 @@ int main(void)
   pid_t  pid;
 
   pid = fork();
-  if (pid == 0) 
+  if (pid == 0)
   {
     for (i = 0; i < 5; i++)
     {
@@ -18,7 +18,7 @@ int main(void)
     }
     exit(1);
   }
-  else 
+  else
   {
     printf("parent process %u pid %u ppid %u status %d\n", pid, getpid(), getppid(), status);
     wait(&status);

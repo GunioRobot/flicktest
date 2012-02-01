@@ -20,22 +20,22 @@ int main(int argc, char *argv[])
   hints.ai_family = AF_UNSPEC; // AF_INET or AF_INET6 to force version
   hints.ai_socktype = SOCK_STREAM;
 
-  if ((status = getaddrinfo(NULL, "61111", &hints, &res)) != 0) 
+  if ((status = getaddrinfo(NULL, "61111", &hints, &res)) != 0)
   {
     fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(status));
     return 2;
   }
 
   s = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
-  ret = bind(s, res->ai_addr, res->ai_addrlen); 
+  ret = bind(s, res->ai_addr, res->ai_addrlen);
   if (ret != 0)
   {
     printf("bind failed\n");
     return 2;
   }
-  listen(s, 10); 
+  listen(s, 10);
 
-  newsock = accept(s, res->ai_addr, &res->ai_addrlen); 
+  newsock = accept(s, res->ai_addr, &res->ai_addrlen);
   if (newsock < 0)
   {
     printf("accept failed %d errno %d\n", ret, errno);
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
     printf("id: %d %s \n", recvbuf, buf);
   }
 
-  freeaddrinfo(res); 
+  freeaddrinfo(res);
   return 0;
 }
 

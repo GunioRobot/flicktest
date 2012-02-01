@@ -116,7 +116,7 @@ int main()
 {
   callint();
   callstr();
-  
+
   return 0;
 }
 

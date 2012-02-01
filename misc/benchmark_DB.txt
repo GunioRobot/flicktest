@@ -3,11 +3,11 @@ mysql> show tables
 +---------------------+
 | Tables_in_benchmark |
 +---------------------+
-| FS                  | 
-| IPD                 | 
-| NIC                 | 
-| disk                | 
-| proc                | 
+| FS                  |
+| IPD                 |
+| NIC                 |
+| disk                |
+| proc                |
 +---------------------+
 5 rows in set (0.00 sec)
 
@@ -15,18 +15,18 @@ mysql> desc FS;
 +-------------+-------------+------+-----+---------+-------+
 | Field       | Type        | Null | Key | Default | Extra |
 +-------------+-------------+------+-----+---------+-------+
-| hostname    | varchar(20) | NO   | PRI | NULL    |       | 
-| clock       | int(11)     | NO   | PRI | NULL    |       | 
-| fsid        | int(11)     | NO   | PRI | NULL    |       | 
-| fsname      | varchar(20) | NO   |     | NULL    |       | 
-| path        | varchar(20) | NO   |     | NULL    |       | 
-| mount       | varchar(20) | NO   |     | NULL    |       | 
-| type        | varchar(20) | NO   |     | NULL    |       | 
-| total_space | int(11)     | NO   |     | NULL    |       | 
-| free_space  | int(11)     | NO   |     | NULL    |       | 
-| pagein      | int(11)     | NO   |     | NULL    |       | 
-| pageout     | int(11)     | NO   |     | NULL    |       | 
-| pagetotal   | int(11)     | NO   |     | NULL    |       | 
+| hostname    | varchar(20) | NO   | PRI | NULL    |       |
+| clock       | int(11)     | NO   | PRI | NULL    |       |
+| fsid        | int(11)     | NO   | PRI | NULL    |       |
+| fsname      | varchar(20) | NO   |     | NULL    |       |
+| path        | varchar(20) | NO   |     | NULL    |       |
+| mount       | varchar(20) | NO   |     | NULL    |       |
+| type        | varchar(20) | NO   |     | NULL    |       |
+| total_space | int(11)     | NO   |     | NULL    |       |
+| free_space  | int(11)     | NO   |     | NULL    |       |
+| pagein      | int(11)     | NO   |     | NULL    |       |
+| pageout     | int(11)     | NO   |     | NULL    |       |
+| pagetotal   | int(11)     | NO   |     | NULL    |       |
 +-------------+-------------+------+-----+---------+-------+
 12 rows in set (0.00 sec)
 
@@ -34,26 +34,26 @@ mysql> desc NIC;
 +---------------+-------------+------+-----+---------+-------+
 | Field         | Type        | Null | Key | Default | Extra |
 +---------------+-------------+------+-----+---------+-------+
-| hostname      | varchar(20) | NO   | PRI | NULL    |       | 
-| clock         | int(11)     | NO   | PRI | NULL    |       | 
-| nicid         | int(11)     | NO   | PRI | NULL    |       | 
-| nicname       | varchar(20) | NO   |     | NULL    |       | 
-| ip            | int(11)     | NO   |     | NULL    |       | 
-| mac           | int(11)     | NO   |     | NULL    |       | 
-| bytesin       | int(11)     | NO   |     | NULL    |       | 
-| bytesout      | int(11)     | NO   |     | NULL    |       | 
-| flag          | int(11)     | NO   |     | NULL    |       | 
-| bw            | int(11)     | NO   |     | NULL    |       | 
-| packsin       | int(11)     | NO   |     | NULL    |       | 
-| packsout      | int(11)     | NO   |     | NULL    |       | 
-| err1          | int(11)     | NO   |     | NULL    |       | 
-| packerr       | int(11)     | NO   |     | NULL    |       | 
-| err           | int(11)     | NO   |     | NULL    |       | 
-| packdisc      | int(11)     | NO   |     | NULL    |       | 
-| packunicast   | int(11)     | NO   |     | NULL    |       | 
-| packmulticast | int(11)     | NO   |     | NULL    |       | 
-| packrec       | int(11)     | NO   |     | NULL    |       | 
-| packsend      | int(11)     | NO   |     | NULL    |       | 
+| hostname      | varchar(20) | NO   | PRI | NULL    |       |
+| clock         | int(11)     | NO   | PRI | NULL    |       |
+| nicid         | int(11)     | NO   | PRI | NULL    |       |
+| nicname       | varchar(20) | NO   |     | NULL    |       |
+| ip            | int(11)     | NO   |     | NULL    |       |
+| mac           | int(11)     | NO   |     | NULL    |       |
+| bytesin       | int(11)     | NO   |     | NULL    |       |
+| bytesout      | int(11)     | NO   |     | NULL    |       |
+| flag          | int(11)     | NO   |     | NULL    |       |
+| bw            | int(11)     | NO   |     | NULL    |       |
+| packsin       | int(11)     | NO   |     | NULL    |       |
+| packsout      | int(11)     | NO   |     | NULL    |       |
+| err1          | int(11)     | NO   |     | NULL    |       |
+| packerr       | int(11)     | NO   |     | NULL    |       |
+| err           | int(11)     | NO   |     | NULL    |       |
+| packdisc      | int(11)     | NO   |     | NULL    |       |
+| packunicast   | int(11)     | NO   |     | NULL    |       |
+| packmulticast | int(11)     | NO   |     | NULL    |       |
+| packrec       | int(11)     | NO   |     | NULL    |       |
+| packsend      | int(11)     | NO   |     | NULL    |       |
 +---------------+-------------+------+-----+---------+-------+
 20 rows in set (0.00 sec)
 
@@ -61,16 +61,16 @@ mysql> desc disk;
 +------------+-------------+------+-----+---------+-------+
 | Field      | Type        | Null | Key | Default | Extra |
 +------------+-------------+------+-----+---------+-------+
-| clock      | int(11)     | NO   | PRI | NULL    |       | 
-| hostname   | varchar(20) | NO   | PRI | NULL    |       | 
-| diskid     | int(11)     | NO   | PRI | NULL    |       | 
-| diskname   | varchar(20) | NO   |     | NULL    |       | 
-| ior        | int(11)     | NO   |     | NULL    |       | 
-| iowr       | int(11)     | NO   |     | NULL    |       | 
-| iowait     | int(11)     | NO   |     | NULL    |       | 
-| qlen       | int(11)     | NO   |     | NULL    |       | 
-| total_size | int(11)     | NO   |     | NULL    |       | 
-| occupied   | int(11)     | NO   |     | NULL    |       | 
+| clock      | int(11)     | NO   | PRI | NULL    |       |
+| hostname   | varchar(20) | NO   | PRI | NULL    |       |
+| diskid     | int(11)     | NO   | PRI | NULL    |       |
+| diskname   | varchar(20) | NO   |     | NULL    |       |
+| ior        | int(11)     | NO   |     | NULL    |       |
+| iowr       | int(11)     | NO   |     | NULL    |       |
+| iowait     | int(11)     | NO   |     | NULL    |       |
+| qlen       | int(11)     | NO   |     | NULL    |       |
+| total_size | int(11)     | NO   |     | NULL    |       |
+| occupied   | int(11)     | NO   |     | NULL    |       |
 +------------+-------------+------+-----+---------+-------+
 10 rows in set (0.00 sec)
 
@@ -78,26 +78,26 @@ mysql> desc NIC;
 +---------------+-------------+------+-----+---------+-------+
 | Field         | Type        | Null | Key | Default | Extra |
 +---------------+-------------+------+-----+---------+-------+
-| hostname      | varchar(20) | NO   | PRI | NULL    |       | 
-| clock         | int(11)     | NO   | PRI | NULL    |       | 
-| nicid         | int(11)     | NO   | PRI | NULL    |       | 
-| nicname       | varchar(20) | NO   |     | NULL    |       | 
-| ip            | int(11)     | NO   |     | NULL    |       | 
-| mac           | int(11)     | NO   |     | NULL    |       | 
-| bytesin       | int(11)     | NO   |     | NULL    |       | 
-| bytesout      | int(11)     | NO   |     | NULL    |       | 
-| flag          | int(11)     | NO   |     | NULL    |       | 
-| bw            | int(11)     | NO   |     | NULL    |       | 
-| packsin       | int(11)     | NO   |     | NULL    |       | 
-| packsout      | int(11)     | NO   |     | NULL    |       | 
-| err1          | int(11)     | NO   |     | NULL    |       | 
-| packerr       | int(11)     | NO   |     | NULL    |       | 
-| err           | int(11)     | NO   |     | NULL    |       | 
-| packdisc      | int(11)     | NO   |     | NULL    |       | 
-| packunicast   | int(11)     | NO   |     | NULL    |       | 
-| packmulticast | int(11)     | NO   |     | NULL    |       | 
-| packrec       | int(11)     | NO   |     | NULL    |       | 
-| packsend      | int(11)     | NO   |     | NULL    |       | 
+| hostname      | varchar(20) | NO   | PRI | NULL    |       |
+| clock         | int(11)     | NO   | PRI | NULL    |       |
+| nicid         | int(11)     | NO   | PRI | NULL    |       |
+| nicname       | varchar(20) | NO   |     | NULL    |       |
+| ip            | int(11)     | NO   |     | NULL    |       |
+| mac           | int(11)     | NO   |     | NULL    |       |
+| bytesin       | int(11)     | NO   |     | NULL    |       |
+| bytesout      | int(11)     | NO   |     | NULL    |       |
+| flag          | int(11)     | NO   |     | NULL    |       |
+| bw            | int(11)     | NO   |     | NULL    |       |
+| packsin       | int(11)     | NO   |     | NULL    |       |
+| packsout      | int(11)     | NO   |     | NULL    |       |
+| err1          | int(11)     | NO   |     | NULL    |       |
+| packerr       | int(11)     | NO   |     | NULL    |       |
+| err           | int(11)     | NO   |     | NULL    |       |
+| packdisc      | int(11)     | NO   |     | NULL    |       |
+| packunicast   | int(11)     | NO   |     | NULL    |       |
+| packmulticast | int(11)     | NO   |     | NULL    |       |
+| packrec       | int(11)     | NO   |     | NULL    |       |
+| packsend      | int(11)     | NO   |     | NULL    |       |
 +---------------+-------------+------+-----+---------+-------+
 20 rows in set (0.00 sec)
 
@@ -105,16 +105,16 @@ mysql> desc proc;
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
 +----------+-------------+------+-----+---------+-------+
-| clock    | int(11)     | NO   | PRI | NULL    |       | 
-| hostname | varchar(20) | NO   | PRI | NULL    |       | 
-| pid      | int(11)     | NO   | PRI | NULL    |       | 
-| pname    | varchar(20) | NO   |     | NULL    |       | 
-| cpuper   | int(11)     | NO   |     | NULL    |       | 
-| ioper    | int(11)     | NO   |     | NULL    |       | 
-| mem      | int(11)     | NO   |     | NULL    |       | 
-| fd       | int(11)     | NO   |     | NULL    |       | 
-| rt       | int(11)     | NO   |     | NULL    |       | 
-| prio     | int(11)     | NO   |     | NULL    |       | 
+| clock    | int(11)     | NO   | PRI | NULL    |       |
+| hostname | varchar(20) | NO   | PRI | NULL    |       |
+| pid      | int(11)     | NO   | PRI | NULL    |       |
+| pname    | varchar(20) | NO   |     | NULL    |       |
+| cpuper   | int(11)     | NO   |     | NULL    |       |
+| ioper    | int(11)     | NO   |     | NULL    |       |
+| mem      | int(11)     | NO   |     | NULL    |       |
+| fd       | int(11)     | NO   |     | NULL    |       |
+| rt       | int(11)     | NO   |     | NULL    |       |
+| prio     | int(11)     | NO   |     | NULL    |       |
 +----------+-------------+------+-----+---------+-------+
 10 rows in set (0.00 sec)
 
@@ -122,29 +122,29 @@ mysql> desc IPD;
 +-----------+---------+------+-----+---------+-------+
 | Field     | Type    | Null | Key | Default | Extra |
 +-----------+---------+------+-----+---------+-------+
-| id        | int(11) | NO   | PRI | NULL    |       | 
-| time      | int(11) | NO   |     | NULL    |       | 
-| one       | int(11) | NO   |     | NULL    |       | 
-| two       | int(11) | NO   |     | NULL    |       | 
-| three     | int(11) | NO   |     | NULL    |       | 
-| four      | int(11) | NO   |     | NULL    |       | 
-| five      | int(11) | NO   |     | NULL    |       | 
-| six       | int(11) | NO   |     | NULL    |       | 
-| seven     | int(11) | NO   |     | NULL    |       | 
-| eight     | int(11) | NO   |     | NULL    |       | 
-| nine      | int(11) | NO   |     | NULL    |       | 
-| ten       | int(11) | NO   |     | NULL    |       | 
-| eleven    | int(11) | NO   |     | NULL    |       | 
-| twelve    | int(11) | NO   |     | NULL    |       | 
-| thirteen  | int(11) | NO   |     | NULL    |       | 
-| fourteen  | int(11) | NO   |     | NULL    |       | 
-| fifteen   | int(11) | NO   |     | NULL    |       | 
-| sixteen   | int(11) | NO   |     | NULL    |       | 
-| seventeen | int(11) | NO   |     | NULL    |       | 
-| eighteen  | int(11) | NO   |     | NULL    |       | 
-| nineteen  | int(11) | NO   |     | NULL    |       | 
+| id        | int(11) | NO   | PRI | NULL    |       |
+| time      | int(11) | NO   |     | NULL    |       |
+| one       | int(11) | NO   |     | NULL    |       |
+| two       | int(11) | NO   |     | NULL    |       |
+| three     | int(11) | NO   |     | NULL    |       |
+| four      | int(11) | NO   |     | NULL    |       |
+| five      | int(11) | NO   |     | NULL    |       |
+| six       | int(11) | NO   |     | NULL    |       |
+| seven     | int(11) | NO   |     | NULL    |       |
+| eight     | int(11) | NO   |     | NULL    |       |
+| nine      | int(11) | NO   |     | NULL    |       |
+| ten       | int(11) | NO   |     | NULL    |       |
+| eleven    | int(11) | NO   |     | NULL    |       |
+| twelve    | int(11) | NO   |     | NULL    |       |
+| thirteen  | int(11) | NO   |     | NULL    |       |
+| fourteen  | int(11) | NO   |     | NULL    |       |
+| fifteen   | int(11) | NO   |     | NULL    |       |
+| sixteen   | int(11) | NO   |     | NULL    |       |
+| seventeen | int(11) | NO   |     | NULL    |       |
+| eighteen  | int(11) | NO   |     | NULL    |       |
+| nineteen  | int(11) | NO   |     | NULL    |       |
 +-----------+---------+------+-----+---------+-------+
 21 rows in set (0.00 sec)
 
-mysql> 
+mysql>
 

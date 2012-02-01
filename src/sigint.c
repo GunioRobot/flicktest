@@ -29,7 +29,7 @@ int main(void)
 
     if (fgets(s, sizeof s, stdin) == NULL)
         perror("fgets");
-    else 
+    else
         printf("You entered: %s\n", s);
 
     return 0;
